@@ -1,9 +1,3 @@
-/**
- * @file	main.c
- * @author	Fabio Carrara, Daniele Formichelli
- * @date	May 13, 2013
- * @brief	Main file of lz78 data compressor.
- */
 
 #include <ctype.h>
 #include <stdio.h>
@@ -85,16 +79,16 @@ int main (int argc, char *argv[]) {
 				ht_size = atoll(optarg);
 				flags |= TABLE_SIZE_FLAG;
 				break;
-				
+
 			case 'v':
 				VERBOSE_LEVEL++;
 				break;
-				
+
 			case '?': // unknown option or option without required argument
 				if (optopt == 'o')
 					flags |= ORIG_FILENAME_FLAG;
 					break;
-				
+
 				if (optopt == 'i' || optopt == 's' || optopt == 't')
 					fprintf(stderr, "%s: You cannot specify -%c option without an argument\n", argv[0], optopt);
 				else if (isprint (optopt))
@@ -102,7 +96,7 @@ int main (int argc, char *argv[]) {
 				else
 					fprintf (stderr, "Unknown option character `\\x%x'.\n", optopt);
 				fprintf(stderr, "Try `%s -h' for more information\n", argv[0]);
-				
+
 				exit(EXIT_FAILURE);
 		}
 	}
@@ -110,7 +104,7 @@ int main (int argc, char *argv[]) {
 	if (check_args(argv[0], flags, in_file, out_file, dict_size, ht_size) < 0) // check if options are valid
 		exit(EXIT_FAILURE);
 
-	if (out_file == NULL && (flags & ORIG_FILENAME_FLAG)) { // option -o without argument 
+	if (out_file == NULL && (flags & ORIG_FILENAME_FLAG)) { // option -o without argument
 		if (flags & COMPRESS_FLAG) { // compression: out_file will be stdin.lz78 or filename.lz78
 			if (in_file == NULL)
 				out_file = "stdin.lz78";
@@ -125,26 +119,26 @@ int main (int argc, char *argv[]) {
 		else // decompression: out_file will be original filename if available, stdout otherwise
 			dec_flags |= DEC_ORIG_FILENAME;
 	}
-	
+
 	print_infos(flags, in_file, out_file, dict_size, ht_size);
 	gettimeofday(&t1, NULL);
-	
-	if (flags & COMPRESS_FLAG) 
+
+	if (flags & COMPRESS_FLAG)
 		filesize = compress(in_file, out_file, dict_size, ht_size, meta_flags);
 	else
 		filesize = decompress(in_file, out_file, dec_flags);
-	
+
 	if (filesize < 0) {
 		perror(flags & COMPRESS_FLAG ? "Compression Failed" : "Decompression Failed");
 		goto error;
 	}
-	
+
 	print_stats(flags, in_file, out_file, filesize, t1);
 
 	if (free_name == 1)
 		free(out_file);
 	exit(EXIT_SUCCESS);
-	
+
 error:
 	if (free_name == 1)
 		free(out_file);
