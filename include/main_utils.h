@@ -1,10 +1,3 @@
-/**
- * @file	main_utils.h
- * @author	Fabio Carrara, Daniele Formichelli
- * @date	May 17, 2013
- * @brief	Header file for utility functions for main file.
- * @internal
- */
 
 #ifndef __MAIN_UTILS_H__
 #define __MAIN_UTILS_H__

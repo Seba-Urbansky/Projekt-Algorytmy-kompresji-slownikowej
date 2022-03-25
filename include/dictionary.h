@@ -1,9 +1,4 @@
-/**
- * @file	dictionary.h
- * @author	Fabio Carrara, Daniele Formichelli
- * @date	May 13, 2013
- * @brief	Header file for dictionary interface.
- */
+
 
 #ifndef __DICTIONARY_H__
 #define __DICTIONARY_H__
@@ -98,7 +93,7 @@ int dict_fill(struct dictionary* d, uint32_t ht_index, uint32_t current, uint8_t
 /**
  * Returns the next node index contained in the record at index @p i.
  * If an error occurs, @c ROOT_NODE as an invalid value of next is returned.
- * 
+ *
  *	@example
  *	uint16_t nxt = get_next(d,cur);
  *

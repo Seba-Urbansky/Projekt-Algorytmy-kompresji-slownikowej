@@ -1,9 +1,4 @@
-/**
- * @file	verbose.h
- * @author	Fabio Carrara, Daniele Formichelli
- * @date	May 14, 2013
- * @brief	Header file for printing depending on the verbose level.
- */
+
 
 #ifndef __VERBOSE_H__
 #define __VERBOSE_H__

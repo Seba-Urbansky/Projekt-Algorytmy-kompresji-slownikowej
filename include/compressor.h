@@ -1,9 +1,4 @@
-/**
- * @file	compressor.h
- * @author	Fabio Carrara, Daniele Formichelli
- * @date	May 13, 2013
- * @brief	Header file for compressor interface.
- */
+
 
 #ifndef __COMPRESSOR_H__
 #define __COMPRESSOR_H__

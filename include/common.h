@@ -1,9 +1,4 @@
-/**
- * @file	common.h
- * @author	Fabio Carrara, Daniele Formichelli
- * @date	May 13, 2013
- * @brief	Header file for common utility functions and macros used by more modules.
- */
+
 
 #ifndef __COMMON_H__
 #define __COMMON_H__

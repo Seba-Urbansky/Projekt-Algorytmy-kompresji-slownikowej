@@ -1,9 +1,4 @@
-/**
- * @file	bitio.h
- * @author	Fabio Carrara, Daniele Formichelli
- * @date	May 13, 2013
- * @brief	Header file for bitio module, a bitwise buffered I/O library.
- */
+
 
 #ifndef __BITIO_H__
 #define	__BITIO_H__

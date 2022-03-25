@@ -1,9 +1,4 @@
-/**
- * @file	metadata.h
- * @author	Fabio Carrara, Daniele Formichelli
- * @date	May 14, 2013
- * @brief	Header file for writing metadata before compressed data.
- */
+
 
 #ifndef __METADATA_H__
 #define __METADATA_H__

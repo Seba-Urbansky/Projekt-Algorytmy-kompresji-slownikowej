@@ -1,9 +1,3 @@
-/**
- * @file	decompressor.h
- * @author	Fabio Carrara, Daniele Formichelli
- * @date	May 14, 2013
- * @brief	Header file for decompressor interface.
- */
 
 #ifndef __DECOMPRESSOR_H__
 #define __DECOMPRESSOR_H__
