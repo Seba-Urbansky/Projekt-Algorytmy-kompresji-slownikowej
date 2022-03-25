@@ -1,10 +1,3 @@
-/**
- * @file	common.c
- * @author	Fabio Carrara, Daniele Formichelli
- * @date	May 14, 2013
- * @brief	Implementation file for common module.
- * @internal
- */
 
 #include <openssl/evp.h>
 #include <stdlib.h>
@@ -53,16 +46,16 @@ char* sprinth(const unsigned char *buff, int size) {
 
 int path_len(const char* filename) {
 	int i;
-	
+
 	if (filename == NULL)
 		return -1;
-	
+
 	for (i = strlen(filename) - 1; i >= 0; i--) {
 		if (filename[i] == '/') {
 			return i+1;
 			break;
 		}
 	}
-	
+
 	return 0;
 }

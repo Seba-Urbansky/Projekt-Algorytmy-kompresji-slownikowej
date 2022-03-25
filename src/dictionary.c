@@ -1,10 +1,4 @@
-/**
- * @file	dictionary.c
- * @author	Fabio Carrara, Daniele Formichelli
- * @date	May 14, 2013
- * @brief	Implementation file for dictionary module.
- * @internal
- */
+
 
 #include <errno.h>
 #include <stdlib.h>
@@ -43,7 +37,7 @@ struct dictionary {
 
 /**
  * Hash function: returns a value between @p min and (@p max - 1).
- * It uses Division Hash Function: H(x) = x mod m. 
+ * It uses Division Hash Function: H(x) = x mod m.
  * (@p current || @p symbol) is used as key.
  *
  *	@param	current	first part of the key
@@ -76,11 +70,11 @@ struct dictionary* dict_new(uint32_t size, int compression, uint32_t ht_size, ui
 	d->ht.next = NULL;
 	d->word = NULL;
 	d->compression = compression;
-	
-	
+
+
 	d->size = size;
 	d->symbols = symbols;
-	
+
 	d->ht.current = malloc(sizeof(d->ht.current)*ht_size);
 	if (d->ht.current == NULL)
 		goto error;
@@ -93,12 +87,12 @@ struct dictionary* dict_new(uint32_t size, int compression, uint32_t ht_size, ui
 			goto error;
 	}
 	d->ht_size = ht_size;
-	
+
 	d->word = malloc(WORD_START_SIZE + 1);
 	if (d->word == NULL)
 		goto error;
 	d->max_size = WORD_START_SIZE;
-	
+
 	return d;
 
 error:
@@ -145,17 +139,17 @@ uint16_t dict_init(struct dictionary* d) {
 }
 
 uint16_t dict_reinit(struct dictionary* d) {
-	
+
 	uint32_t i;
-	
+
 	if (d == NULL) {
 		errno = EINVAL;
 		return 0;
 	}
-	
+
 	for (i = d->symbols+1; i < d->ht_size; i++)
 		d->ht.current[i] = EMPTY_NODE;
-	
+
 	return d->symbols+1;
 }
 

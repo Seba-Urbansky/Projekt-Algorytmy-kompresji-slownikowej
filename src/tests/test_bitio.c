@@ -1,10 +1,4 @@
-/**
- * @file	test_bitio.c
- * @author	Fabio Carrara, Daniele Formichelli
- * @date	May 14, 2013
- * @brief	Test file for bitio module, a bitwise buffered I/O library.
- * @internal
- */
+
 
 #include <stdlib.h>
 #include <stdio.h>

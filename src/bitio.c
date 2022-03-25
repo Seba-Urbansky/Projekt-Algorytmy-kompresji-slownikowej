@@ -1,10 +1,4 @@
-/**
- * @file	bitio.c
- * @author	Fabio Carrara, Daniele Formichelli
- * @date	May 14, 2013
- * @brief	Implementation file for bitio module, a bitwise buffered I/O library.
- * @internal
- */
+
 
 #include <endian.h>
 #include <errno.h>
@@ -191,12 +185,12 @@ int bitio_read(struct bitio *f, uint64_t *data, int len) {
 		errno = EINVAL;
 		return -1;
 	}
-	
+
 	wsize = 8*sizeof(f->buf[0]); // size of buffer words in bit
 	*data = 0;
-	
+
 	do {
-		
+
 		if (f->next == f->end) { // buffer is empty
 			f->end = 8*read(f->fd, f->buf, sizeof(f->buf));
 			if (f->end < 0)

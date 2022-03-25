@@ -1,10 +1,3 @@
-/**
- * @file	metadata.c
- * @author	Fabio Carrara, Daniele Formichelli
- * @date	May 14, 2013
- * @brief	Implementation file for metadata module.
- * @internal
- */
 
 #include <errno.h>
 #include <stdlib.h>
@@ -62,7 +55,7 @@ void* meta_read(struct bitio *bd, uint8_t *type, uint8_t *size) {
 			goto error;
 		}
 
-		
+
 		to_read -= read_step;
 	}
 

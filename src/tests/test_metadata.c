@@ -1,10 +1,4 @@
-/**
- * @file	test_metadata.c
- * @author	Fabio Carrara, Daniele Formichelli
- * @date	May 14, 2013
- * @brief	Test file for metadata module.
- * @internal
- */
+
 
 #include <stdio.h>
 #include <stdlib.h>

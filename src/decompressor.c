@@ -1,10 +1,4 @@
-/**
- * @file	decompressor.c
- * @author	Fabio Carrara, Daniele Formichelli
- * @date	May 14, 2013
- * @brief	Implementation file for decompressor module.
- * @internal
- */
+
 
 #include <errno.h>
 #include <openssl/evp.h>
@@ -57,7 +51,7 @@ int64_t decompress(const char* in_filename, const char* out_filename, uint8_t fl
 	void				*meta_data, *md5c = NULL, *md5d = NULL;
 	EVP_MD_CTX			*md_ctx = NULL;
 
-	if (in_filename != NULL) { 
+	if (in_filename != NULL) {
 		bd = bitio_open(in_filename, 'r');
 		if (bd == NULL)
 			goto error;
@@ -115,7 +109,7 @@ int64_t decompress(const char* in_filename, const char* out_filename, uint8_t fl
 
 	if ((flags & DEC_ORIG_FILENAME) && out_file == NULL) // if i have DEC_ORIG_FILENAME setted but no info in metadata i use stdin as outfile
 		out_filename = "stdin";
-	
+
 	if (out_filename != NULL) {
 		fout = fopen(out_filename, "w");
 		if (fout == NULL)
@@ -144,7 +138,7 @@ int64_t decompress(const char* in_filename, const char* out_filename, uint8_t fl
 		initial_bits++;
 	}
 	bits = initial_bits;
-	
+
 	for (;;) {
 		// put in cur the index of the fetched word in the dictionary
 		cur = fetch(bd, bits);
@@ -155,10 +149,10 @@ int64_t decompress(const char* in_filename, const char* out_filename, uint8_t fl
 			break;
 
 		c = dict_first_symbol(d, cur);
-		
+
 		if (c == EOF_SYMBOL)
 			goto error;
-		
+
 		if (!first) {
 			// complete previous record with index of new record
 			// ROOT_NODE as current node value means 'don't change it'.
@@ -176,7 +170,7 @@ int64_t decompress(const char* in_filename, const char* out_filename, uint8_t fl
 		word = dict_word(d, cur, &len);
 		if (word == NULL)
 			goto error;
-		
+
 		written = fwrite(word, 1, len, fout);
 
 		if (written < len)
@@ -195,9 +189,9 @@ int64_t decompress(const char* in_filename, const char* out_filename, uint8_t fl
 		}
 
 		if (next_record + 1 == dict_size) {
-			
+
 			next_record = first_record;
-			
+
 			bits = initial_bits;
 			bitMask = 1 << bits;
 
@@ -208,7 +202,7 @@ int64_t decompress(const char* in_filename, const char* out_filename, uint8_t fl
 		dict_fill(d, next_record, cur, 0, 0); // symbol will be filled at the beginning of next iteration
 
 	}
-	
+
 	filesize += write_count;
 
 	if (md5c != NULL) {

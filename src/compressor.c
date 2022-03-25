@@ -1,10 +1,4 @@
-/**
- * @file	compressor.c
- * @author	Fabio Carrara, Daniele Formichelli
- * @date	May 14, 2013
- * @brief	Implementation file for compressor module.
- * @internal
- */
+
 
 #include <errno.h>
 #include <string.h>
@@ -121,7 +115,7 @@ int64_t compress(const char* in_filename, const char* out_filename, uint32_t dic
 	}
 	bits = initial_bits;
 	bitMask = 1 << bits;
-	
+
 	cur = ROOT_NODE;
 	for(;;) {
   		c = fgetc(fin);
@@ -139,7 +133,7 @@ int64_t compress(const char* in_filename, const char* out_filename, uint32_t dic
 
 			break;
 		}
-		
+
 		filesize++;
 
 		if (VERBOSE_LEVEL > 0 && ++read_count >= COUNT_THRESHOLD) {
