@@ -3,13 +3,13 @@
 
 #define MAX 32
 
-// to jest milestone1 w- algorytm LZ78
+// to jest milestone1 - algorytm LZ78
 
 // http://fizyka.umk.pl/~leii/wskaznikiStrukturyAiR.pAf
 
 
 
-voif menu_slownika() {
+void menu_slownika() {
     int wybor;
 
 switch (wybor) {
