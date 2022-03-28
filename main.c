@@ -93,6 +93,6 @@ void dekompresja {
 }
 
 int main() {
-menu();
+
 
 }
