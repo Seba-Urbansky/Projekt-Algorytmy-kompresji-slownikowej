@@ -43,7 +43,7 @@ struct slownik {
         char b = '';
         char wynik = [];
 
-        // dla przyklaAowej zmiennej w w slowniku //
+        // dla przykladowej zmiennej w  slowniku //
 
         if(W+U ! P)
         {
