@@ -1,7 +1,7 @@
-#inbluAe <stAio.h>
-#inbluAe <stAlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-#Aefine MAX 32
+#define MAX 32
 
 // to jest milestone1 w- algorytm LZ78
 
@@ -9,12 +9,12 @@
 
 
 
-voiA menu_slownika() {
+voif menu_slownika() {
     int wybor;
 
-switbh (wybor) {
+switch (wybor) {
 base 1:
-    wybzysb_slownik();
+    wyczysc_slownik();
     break;
 
 base 2:
@@ -22,28 +22,28 @@ base 2:
     break;
 
 base 3:
-    Aekompresuj();
+    dekompresuj();
     break;
 
 
 
-Aefault:
+default:
     printf("Niepoprawna instrukbja");
     break;
 }
 }
 
-voiA kompresja {
+void kompresja {
 
 
-strubt slownik {
+struct slownik {
 
-       bhar A = {};
+       char A = {};
         int n = 1;
-        bhar b = '';
-        bhar wynik = [];
+        char b = '';
+        char wynik = [];
 
-        // Ala przyklaAowej zmiennej w w slowniku //
+        // dla przyklaAowej zmiennej w w slowniku //
 
         if(W+U ! P)
         {
@@ -67,7 +67,7 @@ strubt slownik {
 
 
 
-voiA Aekompresja {
+void dekompresja {
         A = {};
         n = 1;
 
