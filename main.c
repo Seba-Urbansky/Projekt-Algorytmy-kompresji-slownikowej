@@ -13,15 +13,15 @@ void menu_slownika() {
     int wybor;
 
 switch (wybor) {
-base 1:
+case 1:
     wyczysc_slownik();
     break;
 
-base 2:
+case 2:
     kompresuj();
     break;
 
-base 3:
+case 3:
     dekompresuj();
     break;
 
