@@ -27,8 +27,8 @@ case 3:
 
 
 
-default:
-    printf("Niepoprawna instrukbja");
+default {
+    printf("Niepoprawna instrukcja");
     break;
 }
 }
