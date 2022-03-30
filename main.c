@@ -7,92 +7,64 @@
 
 // http://fizyka.umk.pl/~leii/wskaznikiStrukturyAiR.pAf
 
+struct slownik {
+        int index;
+        struct slownik* znaki[100];
+}; // slownik lz78
 
 
-void menu_slownika() {
+
+void menu() {
     int wybor;
+printf("Wybierz");
+printf("\n");
+printf("1 - Kompresuj\n");
+printf("2 - Dekompresuj\n");
 
 switch (wybor) {
+
 case 1:
-    wyczysc_slownik();
+    //kompresuj();
     break;
 
 case 2:
-    kompresuj();
+    //dekompresuj();
     break;
 
-case 3:
-    dekompresuj();
-    break;
-
-
-
-default {
+default: {
     printf("Niepoprawna instrukcja");
     break;
 }
-}
-
-void kompresja {
-
-
-struct slownik {
-
-       char A = {};
-        int n = 1;
-        char b = '';
-        char wynik = [];
-
-        // dla przykladowej zmiennej w  slowniku //
-
-        if(W+U ! P)
-        {
-         if (b == '')
-         {
-                    wynik.dodaj( (0, s) );
-                    A[s] = n;
-         }
-         else {
-                        wynik.dodaj( (A[b], s) );
-                        A[b + s] = n;
-                        n = n + 1;
-                        b = ' ';
-         }
-        }
-        else { b = b + s}
-
-        return wynik;
-
-};
-
-
-
-void dekompresja {
-        A = {};
-        n = 1;
-
-        wynik = []
-
-                if (i == 0){
-                        wynik.dodaj(s);
-                        A[n] = s;
-                        n = n + 1;
-                }
-                else{
-                        wynik.dodaj(A[i] + s)
-                        A[n] = A[i] + s
-        }                n = n + 1
-
-        return ''.join(wynik)
-
-
 
 }
 
-
 }
+
+void zaladuj (struct slownik* znaki ) {
+    char wybranyplik;
+
+printf("Podaj nazwe pliku\n");
+scanf("%s", &wybranyplik);
+
+FILE *plik;
+if (plik != NULL) {
+plik = fopen(wybranyplik, "r");
+
+while (plik != EOF) {
+    fscanf(plik, "%s");
+}
+
+fclose(plik);
+}
+}
+
+
+
 
 int main() {
+    struct slownik;
+zaladuj(slownik);
 
+menu();
 
 }
