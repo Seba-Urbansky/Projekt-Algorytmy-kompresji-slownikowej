@@ -13,8 +13,8 @@ struct slownik {
 }; // slownik lz78
 
 
-void kompresuj(struct slownik *znaki);
-void dekompresuj(struct slownik *znaki);
+void kompresuj();
+void dekompresuj();
 void wyjscie();
 void menu();
 void wczytaj();
@@ -34,6 +34,10 @@ void menu() {
     printf("\n");
     printf("4. Powrot do menu");
     printf("\n");
+
+    scanf("%d", &wybor);
+    printf("\n");
+    
 switch (wybor) {
 
 case 1:
@@ -64,38 +68,38 @@ void kompresuj()
 {
     char tekst[MAX];
     printf("Wpisz tekst ktory chcesz zaszyfrowac");
-    scanf("%d", &tekst)
+    scanf("%d", &tekst);
 }
 
-void wczytaj (struct slownik* znaki ) {
+void wczytaj () {
    
 FILE *plik;
 if (plik != NULL) {
 plik = fopen("LZ78.csv", "r");
-
+}
 while (plik != EOF) {
     fscanf(plik, "%s");
 }
-
-void zapis (struct slownik* znaki ) {
+}
+void zapis () {
    
 FILE *plik;
 if (plik != NULL) {
 plik = fopen("LZ78.csv", "w");
-
+}
 while (plik != EOF) {
     fscanf(plik, "%s");
 }
 fclose(plik);
+
 }
-}}
 
 
-int main() {
-    struct slownik;
-zaladuj(slownik);
+
+int main() 
+{
 
 menu();
 
 }
-}
+
