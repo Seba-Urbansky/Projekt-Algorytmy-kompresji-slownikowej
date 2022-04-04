@@ -7,11 +7,11 @@
 
 // http://fizyka.umk.pl/~leii/wskaznikiStrukturyAiR.pAf
 
-struct slownik {
-        int index;
-        struct slownik* znaki[100];
+struct slownik
+{
+    int index;
+    struct slownik *znaki[100];
 }; // slownik lz78
-
 
 void kompresuj();
 void dekompresuj();
@@ -20,8 +20,8 @@ void menu();
 void wczytaj();
 void zapis();
 
-
-void menu() {
+void menu()
+{
     int wybor;
 
     printf("Menu LZ78");
@@ -37,31 +37,30 @@ void menu() {
 
     scanf("%d", &wybor);
     printf("\n");
-    
-switch (wybor) {
 
-case 1:
-    kompresuj();
-    break;
+    switch (wybor)
+    {
 
-case 2:
-    dekompresuj();
-    break;
-case 3:
-    wyjscie();
-    break;
-case 4:
-    menu();
-    break;
+    case 1:
+        kompresuj();
+        break;
 
+    case 2:
+        dekompresuj();
+        break;
+    case 3:
+        wyjscie();
+        break;
+    case 4:
+        menu();
+        break;
 
-default: {
-    printf("Niepoprawna instrukcja");
-    break;
-}
-
-}
-
+    default:
+    {
+        printf("Niepoprawna instrukcja");
+        break;
+    }
+    }
 }
 
 void kompresuj()
@@ -71,35 +70,36 @@ void kompresuj()
     scanf("%d", &tekst);
 }
 
-void wczytaj () {
-   
-FILE *plik;
-if (plik != NULL) {
-plik = fopen("LZ78.txt", "r");
-}
-while (plik != EOF) {
-    fscanf(plik, "%s");
-}
-}
-void zapis () {
-   
-FILE *plik;
-if (plik != NULL) {
-plik = fopen("LZ78.txt", "w");
-}
-while (plik != EOF) {
-    fscanf(plik, "%s");
-}
-fclose(plik);
-
-}
-
-
-
-int main() 
+void wczytaj()
 {
 
-menu();
+    FILE *plik;
+    if (plik != NULL)
+    {
+        plik = fopen("LZ78.txt", "r");
+    }
+    while (plik != EOF)
+    {
+        fscanf(plik, "%s");
+    }
+}
+void zapis()
+{
 
+    FILE *plik;
+    if (plik != NULL)
+    {
+        plik = fopen("LZ78.txt", "w");
+    }
+    while (plik != EOF)
+    {
+        fscanf(plik, "%s");
+    }
+    fclose(plik);
 }
 
+int main()
+{
+
+    menu();
+}
