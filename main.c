@@ -75,7 +75,7 @@ void wczytaj () {
    
 FILE *plik;
 if (plik != NULL) {
-plik = fopen("LZ78.csv", "r");
+plik = fopen("LZ78.txt", "r");
 }
 while (plik != EOF) {
     fscanf(plik, "%s");
@@ -85,7 +85,7 @@ void zapis () {
    
 FILE *plik;
 if (plik != NULL) {
-plik = fopen("LZ78.csv", "w");
+plik = fopen("LZ78.txt", "w");
 }
 while (plik != EOF) {
     fscanf(plik, "%s");
