@@ -13,23 +13,43 @@ struct slownik {
 }; // slownik lz78
 
 
+void kompresuj(struct slownik *znaki);
+void dekompresuj(struct slownik *znaki);
+void wyjscie();
+void menu();
+void wczytaj();
+void zapis();
+
 
 void menu() {
     int wybor;
-printf("Wybierz");
-printf("\n");
-printf("1 - Kompresuj\n");
-printf("2 - Dekompresuj\n");
 
+    printf("Menu LZ78");
+    printf("\n\n");
+    printf("1. Wpisz tekst do kompresji");
+    printf("\n");
+    printf("2. Dekompresuj tekst");
+    printf("\n");
+    printf("3. Wyjście z programu");
+    printf("\n");
+    printf("4. Powrot do menu");
+    printf("\n");
 switch (wybor) {
 
 case 1:
-    //kompresuj();
+    kompresuj();
     break;
 
 case 2:
-    //dekompresuj();
+    dekompresuj();
     break;
+case 3
+    wyjscie();
+    break;
+case 4
+    menu();
+    break;
+
 
 default: {
     printf("Niepoprawna instrukcja");
@@ -40,20 +60,32 @@ default: {
 
 }
 
-void zaladuj (struct slownik* znaki ) {
-    char wybranyplik;
+void kompresuj()
+{
+    char tekst[MAX];
+    printf("Wpisz tekst ktory chcesz zaszyfrowac");
+    scanf("%d", &tekst)
+}
 
-printf("Podaj nazwe pliku\n");
-scanf("%s", &wybranyplik);
-
+void wczytaj (struct slownik* znaki ) {
+   
 FILE *plik;
 if (plik != NULL) {
-plik = fopen(wybranyplik, "r");
+plik = fopen("LZ78.csv", "r");
 
 while (plik != EOF) {
     fscanf(plik, "%s");
 }
 
+void zapis (struct slownik* znaki ) {
+   
+FILE *plik;
+if (plik != NULL) {
+plik = fopen("LZ78.csv", "w");
+
+while (plik != EOF) {
+    fscanf(plik, "%s");
+}
 fclose(plik);
 }
 }
