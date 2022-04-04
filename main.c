@@ -43,10 +43,10 @@ case 1:
 case 2:
     dekompresuj();
     break;
-case 3
+case 3:
     wyjscie();
     break;
-case 4
+case 4:
     menu();
     break;
 
@@ -88,9 +88,7 @@ while (plik != EOF) {
 }
 fclose(plik);
 }
-}
-
-
+}}
 
 
 int main() {
@@ -99,4 +97,5 @@ zaladuj(slownik);
 
 menu();
 
+}
 }
