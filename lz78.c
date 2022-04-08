@@ -4,11 +4,11 @@
 
 #include "lz78.h"
 
-void dodaj_potomka(lista **dziecko, indeks idx, char znak)
+void dodaj_potomka(Lista **dziecko, indeks idx, char znak)
 {
     if (*dziecko == NULL)
     {
-        *dziecko = (lista *)malloc(sizeof(lista));
+        *dziecko = (Lista *)malloc(sizeof(Lista));
         if (*dziecko == NULL)
         {
             exit(0);
@@ -23,12 +23,12 @@ void dodaj_potomka(lista **dziecko, indeks idx, char znak)
     }
     else
     {
-        lista *aktualny = *dziecko;
+        Lista *aktualny = *dziecko;
 
         while (aktualny->nastepny != NULL)
             aktualny = aktualny->nastepny;
 
-        aktualny->nastepny = (lista *)malloc(sizeof(lista));
+        aktualny->nastepny = (Lista *)malloc(sizeof(Lista));
         if (aktualny->nastepny == NULL)
         {
             exit(0);
@@ -43,7 +43,7 @@ void dodaj_potomka(lista **dziecko, indeks idx, char znak)
     }
 }
 
-lista *wyszukaj_potomka(lista *dziecko, char znak)
+Lista *wyszukaj_potomka(Lista *dziecko, char znak)
 {
     if (dziecko != NULL)
     {
@@ -55,70 +55,70 @@ lista *wyszukaj_potomka(lista *dziecko, char znak)
     return NULL;
 }
 
-drzewo *wyszukaj(drzewo *Rodzic, char *znak, long long int *pozycja, long long int dlugosc_napisu)
+Wezel *wyszukaj(Wezel *rodzic, char *znak, long long int *pozycja, long long int dlugosc_napisu)
 {
-    lista *Dziecko;
+    Lista *dziecko;
     char character = znak[(*pozycja)];
 
     
-    while (Rodzic != NULL)
+    while (rodzic != NULL)
     {
-        Dziecko = wyszukaj_potomka(Rodzic->dziecko, character); 
+        dziecko = wyszukaj_potomka(rodzic->dziecko, character); 
 
-        if ((*pozycja) < dlugosc_napisu - 1 && Dziecko != NULL)
+        if ((*pozycja) < dlugosc_napisu - 1 && dziecko != NULL)
         {
             (*pozycja)++;
-            Rodzic = &(Dziecko->wezel);
+            rodzic = &(dziecko->wezel);
             character = znak[(*pozycja)];
         }
         else
             break;
     }
-    return Rodzic;
+    return rodzic;
 }
 
-void kompresuj(char *znak, long long int RozmiarNapisu, char *nazwa_pliku_wyjsciowego)
+void kompresuj(char *znak, long long int dlugosc_napisu, char *nazwa_pliku_wyjsciowego)
 {
     FILE *wyjsciowy = fopen(nazwa_pliku_wyjsciowego, "wb");
 
-    drzewo *Slownik = (drzewo *)malloc(sizeof(drzewo));
-    if (Slownik == NULL)
+    Wezel *slownik = (Wezel *)malloc(sizeof(Wezel));
+    if (slownik == NULL)
     {
         exit(0);
     }
     else
     {
-        Slownik->idx = 0;
-        Slownik->znak = NULL; 
-        Slownik->dziecko = NULL;
+        slownik->idx = 0;
+        
+        slownik->dziecko = NULL;
 
         long long int pozycja = 0;    
         long long int nowy_indeks = 1; 
 
-        while (pozycja < RozmiarNapisu)
+        while (pozycja < dlugosc_napisu)
         {
-            drzewo *Rodzic = wyszukaj(Slownik, znak, &pozycja, RozmiarNapisu); 
+            Wezel *rodzic = wyszukaj(slownik, znak, &pozycja, dlugosc_napisu); 
 
-            if (pozycja < RozmiarNapisu)
+            if (pozycja < dlugosc_napisu)
             {
                 if (nowy_indeks < UCHAR_MAX) 
                 {
-                    fwrite(&(Rodzic->idx), sizeof(indeks), 1, wyjsciowy); 
+                    fwrite(&(rodzic->idx), sizeof(indeks), 1, wyjsciowy); 
                     fwrite(&znak[pozycja], sizeof(char), 1, wyjsciowy);   
-                    dodaj_potomka(&(Rodzic->dziecko), nowy_indeks, znak[pozycja]);
+                    dodaj_potomka(&(rodzic->dziecko), nowy_indeks, znak[pozycja]);
                     pozycja++;
                     nowy_indeks++;
                 }
                 else
                 {
-                    usun_slownik(Slownik);
+                    usun_slownik(slownik);
                     exit(0);
                 }
             }
             else
                 break;
         }
-        usun_slownik(Slownik);
+        usun_slownik(slownik);
     }
     fclose(wyjsciowy);
 }
@@ -224,9 +224,9 @@ void wczytaj_dekompresje(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsci
     else
     {
         fseek(plik, 0, SEEK_END);
-        long long int RozmiarPliku = ftell(plik);
+        long long int rozmiar_pliku = ftell(plik);
         fseek(plik, 0, 0);
-        long long int rozmiar_tablicy = RozmiarPliku / (sizeof(indeks) + sizeof(char));
+        long long int rozmiar_tablicy = rozmiar_pliku / (sizeof(indeks) + sizeof(char));
         
         indeks *idx = (indeks *)malloc(sizeof(indeks) * rozmiar_tablicy); 
         char *znak = (char *)malloc(sizeof(char) * rozmiar_tablicy);      
@@ -258,11 +258,11 @@ void wczytaj_dekompresje(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsci
     }
 }
 
-void usun_slownik(drzewo *drzewo)
+void usun_slownik(Wezel *drzewo)
 {
     if (drzewo != NULL)
     {
-        lista *poprzednie_dziecko = NULL;
+        Lista *poprzednie_dziecko = NULL;
         while (drzewo->dziecko)
         {
             usun_slownik(&(drzewo->dziecko->wezel));
@@ -270,7 +270,8 @@ void usun_slownik(drzewo *drzewo)
             drzewo->dziecko = drzewo->dziecko->nastepny;
             free(poprzednie_dziecko);
         }
+        
+        usun_slownik(&(drzewo->dziecko->wezel));
         free(drzewo->dziecko);
-        usun_slownik(drzewo->dziecko);
     }
 }

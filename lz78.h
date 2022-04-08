@@ -8,40 +8,40 @@
 typedef unsigned char indeks;
 
 
-typedef struct node
+typedef struct WezelStruktura
 {
     indeks idx;
     char znak;
-    struct list* dziecko;
-} drzewo;
+    struct ListaStruktura* dziecko;
+} Wezel;
 
 
-typedef struct list
+typedef struct ListaStruktura
 {
-    struct node wezel;
-    struct list* nastepny;
-} lista;
+    struct WezelStruktura wezel;
+    struct ListaStruktura* nastepny;
+} Lista;
 
 
-void dodaj_potomka(lista** Dziecko, indeks idx, char znak);
+void dodaj_potomka(Lista** dziecko, indeks idx, char znak);
 
 
-lista* wyszukaj_potomka(lista* Dziecko, char znak);
+Lista* wyszukaj_potomka(Lista* dziecko, char znak);
 
 
-drzewo* wyszukaj(drzewo* Rodzic, char* znak, long long int* pozycja, long long int RozmiarNapisu);
+Wezel* wyszukaj(Wezel* rodzic, char* znak, long long int* pozycja, long long int dlugosc_napisu);
 
 
-void kompresuj(char* znak, long long int RozmiarNapisu, char* nazwa_pliku_wyjsciowego);
+void kompresuj(char* znak, long long int dlugosc_napisu, char* nazwa_pliku_wyjsciowego);
 
 
 long long int dlugosc_slowa(indeks* idx, long long int pozycja);
 
 
-char* czytaj_slowo(indeks* idx, char* znak, long long int pozycja, long long int RozmiarSlowa, char* slowo);
+char* czytaj_slowo(indeks* idx, char* znak, long long int pozycja, long long int dlugosc_slowa, char* slowo);
 
 
-void dekompresuj(indeks* idx, char* znak, long long int RozmiarTablic, char* nazwa_pliku_wyjsciowego);
+void dekompresuj(indeks* idx, char* znak, long long int rozmiar_tablic, char* nazwa_pliku_wyjsciowego);
 
 
 void wczytaj_kompresje(char* nazwa_pliku_wejsciowego, char* nazwa_pliku_wyjsciowego);
@@ -50,6 +50,6 @@ void wczytaj_kompresje(char* nazwa_pliku_wejsciowego, char* nazwa_pliku_wyjsciow
 void wczytaj_dekompresje(char* nazwa_pliku_wejsciowego, char* nazwa_pliku_wyjsciowego);
 
 
-void usun_slownik(drzewo* Drzewo);
+void usun_slownik(Wezel* drzewo);
 
 #endif
