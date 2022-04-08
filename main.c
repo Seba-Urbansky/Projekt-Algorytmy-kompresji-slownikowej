@@ -39,10 +39,10 @@ void menu()
     switch (wybor)
     {
     case 1:
-        WczytajKompresja(&nazwa_pliku, &skompresowany_nazwa_pliku);
+        wczytaj_kompresje(&nazwa_pliku, &skompresowany_nazwa_pliku);
         break;
     case 2:
-        WczytajDekompresja(&skompresowany_nazwa_pliku, &nazwa_pliku);
+        wczytaj_dekompresje(&skompresowany_nazwa_pliku, &nazwa_pliku);
         break;
     case 3:
         wyjscie();

@@ -15,60 +15,60 @@ void dodaj_potomka(lista **dziecko, indeks idx, char znak)
         }
         else
         {
-            (*dziecko)->Node.idx = idx;
-            (*dziecko)->Node.znak = znak;
-            (*dziecko)->Node.dziecko = NULL;
-            (*dziecko)->pNext = NULL;
+            (*dziecko)->wezel.idx = idx;
+            (*dziecko)->wezel.znak = znak;
+            (*dziecko)->wezel.dziecko = NULL;
+            (*dziecko)->nastepny = NULL;
         }
     }
     else
     {
-        lista *biezacy = *dziecko;
+        lista *aktualny = *dziecko;
 
-        while (biezacy->pNext != NULL)
-            biezacy = biezacy->pNext;
+        while (aktualny->nastepny != NULL)
+            aktualny = aktualny->nastepny;
 
-        biezacy->pNext = (lista *)malloc(sizeof(lista));
-        if (biezacy->pNext == NULL)
+        aktualny->nastepny = (lista *)malloc(sizeof(lista));
+        if (aktualny->nastepny == NULL)
         {
             exit(0);
         }
         else
         {
-            biezacy->pNext->Node.idx = idx;
-            biezacy->pNext->Node.znak = znak;
-            biezacy->pNext->Node.dziecko = NULL;
-            biezacy->pNext->pNext = NULL;
+            aktualny->nastepny->wezel.idx = idx;
+            aktualny->nastepny->wezel.znak = znak;
+            aktualny->nastepny->wezel.dziecko = NULL;
+            aktualny->nastepny->nastepny = NULL;
         }
     }
 }
 
-lista *ZnajdzPotomka(lista *Dziecko, char znak)
+lista *wyszukaj_potomka(lista *dziecko, char znak)
 {
-    if (Dziecko != NULL)
+    if (dziecko != NULL)
     {
-        while (Dziecko != NULL && Dziecko->Node.znak != znak)
-            Dziecko = Dziecko->pNext;
-        if (Dziecko != NULL && Dziecko->Node.znak == znak)
-            return Dziecko;
+        while (dziecko != NULL && dziecko->wezel.znak != znak)
+            dziecko = dziecko->nastepny;
+        if (dziecko != NULL && dziecko->wezel.znak == znak)
+            return dziecko;
     }
     return NULL;
 }
 
-drzewo *Znajdz(drzewo *Rodzic, char *znak, long long int *pozycja, long long int RozmiarNapisu)
+drzewo *wyszukaj(drzewo *Rodzic, char *znak, long long int *pozycja, long long int dlugosc_napisu)
 {
     lista *Dziecko;
     char character = znak[(*pozycja)];
 
-    // dop�ki nie mamy ko�ca listy dzieci
+    
     while (Rodzic != NULL)
     {
-        Dziecko = ZnajdzPotomka(Rodzic->dziecko, character); // Zwraca element zawieraj�cy szukany znak (je�li nie ma takiego, zwraca null).
+        Dziecko = wyszukaj_potomka(Rodzic->dziecko, character); 
 
-        if ((*pozycja) < RozmiarNapisu - 1 && Dziecko != NULL)
+        if ((*pozycja) < dlugosc_napisu - 1 && Dziecko != NULL)
         {
             (*pozycja)++;
-            Rodzic = &(Dziecko->Node);
+            Rodzic = &(Dziecko->wezel);
             character = znak[(*pozycja)];
         }
         else
@@ -77,7 +77,7 @@ drzewo *Znajdz(drzewo *Rodzic, char *znak, long long int *pozycja, long long int
     return Rodzic;
 }
 
-void Kompresja(char *znak, long long int RozmiarNapisu, char *nazwa_pliku_wyjsciowego)
+void kompresuj(char *znak, long long int RozmiarNapisu, char *nazwa_pliku_wyjsciowego)
 {
     FILE *wyjsciowy = fopen(nazwa_pliku_wyjsciowego, "wb");
 
@@ -89,81 +89,81 @@ void Kompresja(char *znak, long long int RozmiarNapisu, char *nazwa_pliku_wyjsci
     else
     {
         Slownik->idx = 0;
-        Slownik->znak = NULL; // Jest niewa�ny
+        Slownik->znak = NULL; 
         Slownik->dziecko = NULL;
 
-        long long int pozycja = 0;    // kt�ry z kolei znak rozpatrujemy.
-        long long int IndeksNowy = 1; // indeks zapisywany w slowniku.
+        long long int pozycja = 0;    
+        long long int nowy_indeks = 1; 
 
         while (pozycja < RozmiarNapisu)
         {
-            drzewo *Rodzic = Znajdz(Slownik, znak, &pozycja, RozmiarNapisu); // Szukamy, czy mamy ju� cz�� ci�gu.
+            drzewo *Rodzic = wyszukaj(Slownik, znak, &pozycja, RozmiarNapisu); 
 
             if (pozycja < RozmiarNapisu)
             {
-                if (IndeksNowy < UCHAR_MAX) // Sprawdzamy, czy osi�gni�to maksymalny rozmiar indeksu.
+                if (nowy_indeks < UCHAR_MAX) 
                 {
-                    fwrite(&(Rodzic->idx), sizeof(indeks), 1, wyjsciowy); // wpisuje indeksy do pliku
-                    fwrite(&znak[pozycja], sizeof(char), 1, wyjsciowy);   // wpisuje znaki do pliku
-                    dodaj_potomka(&(Rodzic->dziecko), IndeksNowy, znak[pozycja]);
+                    fwrite(&(Rodzic->idx), sizeof(indeks), 1, wyjsciowy); 
+                    fwrite(&znak[pozycja], sizeof(char), 1, wyjsciowy);   
+                    dodaj_potomka(&(Rodzic->dziecko), nowy_indeks, znak[pozycja]);
                     pozycja++;
-                    IndeksNowy++;
+                    nowy_indeks++;
                 }
                 else
                 {
-                    UsunSlownik(Slownik);
+                    usun_slownik(Slownik);
                     exit(0);
                 }
             }
             else
                 break;
         }
-        UsunSlownik(Slownik);
+        usun_slownik(Slownik);
     }
     fclose(wyjsciowy);
 }
 
-long long int DlugoscSlowa(indeks *idx, long long int pozycja)
+long long int dlugosc_slowa(indeks *idx, long long int pozycja)
 {
     long long int licznik = 1;
-    indeks IndeksPoprzedni = idx[pozycja];
+    indeks poprzedni_indeks = idx[pozycja];
 
-    while (IndeksPoprzedni != 0)
+    while (poprzedni_indeks != 0)
     {
-        IndeksPoprzedni = idx[IndeksPoprzedni - 1];
+        poprzedni_indeks = idx[poprzedni_indeks - 1];
         licznik++;
     }
 
     return licznik;
 }
 
-char *CzytajSlowo(indeks *idx, char *znak, long long int pozycja, long long int RozmiarSlowa, char *slowo)
+char *czytaj_slowo(indeks *idx, char *znak, long long int pozycja, long long int dlugosc_slowa, char *slowo)
 {
-    indeks IndeksPoprzedni = idx[pozycja];
-    long long int pos = RozmiarSlowa - 1;
+    indeks indeks_poprzedni = idx[pozycja];
+    long long int pos = dlugosc_slowa - 1;
     slowo[pos] = znak[pozycja];
 
-    while (IndeksPoprzedni != 0)
+    while (indeks_poprzedni != 0)
     {
         pos--;
-        slowo[pos] = znak[IndeksPoprzedni - 1];
-        IndeksPoprzedni = idx[IndeksPoprzedni - 1];
+        slowo[pos] = znak[indeks_poprzedni - 1];
+        indeks_poprzedni = idx[indeks_poprzedni - 1];
     }
 
     return slowo;
 }
 
-void Dekompresja(indeks *idx, char *znak, long long int RozmiarTablic, char *nazwa_pliku_wyjsciowego)
+void dekompresuj(indeks *idx, char *znak, long long int rozmiar_tablic, char *nazwa_pliku_wyjsciowego)
 {
     FILE *wyjsciowy = fopen(nazwa_pliku_wyjsciowego, "wb");
 
     long long int pozycja = 0;
-    while (pozycja < RozmiarTablic)
+    while (pozycja < rozmiar_tablic)
     {
-        long long int RozmiarSlowa = DlugoscSlowa(idx, pozycja);
-        char *slowo = (char *)malloc(sizeof(char) * RozmiarSlowa);
-        slowo = CzytajSlowo(idx, znak, pozycja, RozmiarSlowa, slowo);
-        fwrite(slowo, sizeof(char), RozmiarSlowa, wyjsciowy);
+        long long int rozmiar_slowa = dlugosc_slowa(idx, pozycja);
+        char *slowo = (char *)malloc(sizeof(char) * rozmiar_slowa);
+        slowo = czytaj_slowo(idx, znak, pozycja, rozmiar_slowa, slowo);
+        fwrite(slowo, sizeof(char), rozmiar_slowa, wyjsciowy);
         free(slowo);
         pozycja++;
     }
@@ -171,9 +171,9 @@ void Dekompresja(indeks *idx, char *znak, long long int RozmiarTablic, char *naz
     fclose(wyjsciowy);
 }
 
-void WczytajKompresja(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciowego)
+void wczytaj_kompresje(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciowego)
 {
-    // Otwieranie pliku.
+    
     FILE *plik = fopen(nazwa_pliku_wejsciowego, "rb");
     if (plik == NULL)
     {
@@ -182,18 +182,17 @@ void WczytajKompresja(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciowe
     else
     {
         fseek(plik, 0, SEEK_END);
-        long long int RozmiarPliku = ftell(plik);
+        long long int rozmiar_pliku = ftell(plik);
         fseek(plik, 0, 0);
 
-        // Alokacja pami�ci.
-        char *napis = (char *)malloc(sizeof(char) * RozmiarPliku);
+        char *napis = (char *)malloc(sizeof(char) * rozmiar_pliku);
         if (napis == NULL)
         {
             exit(0);
         }
         else
         {
-            // Kopiowanie zawarto�ci pliku do bufora.
+            
             long long int i = 0;
             while (1)
             {
@@ -203,9 +202,9 @@ void WczytajKompresja(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciowe
                 i++;
             }
 
-            Kompresja(napis, RozmiarPliku, nazwa_pliku_wyjsciowego);
+            kompresuj(napis, rozmiar_pliku, nazwa_pliku_wyjsciowego);
 
-            // Uwolnienie bufora.
+           
             free(napis);
 
             fclose(plik);
@@ -213,10 +212,10 @@ void WczytajKompresja(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciowe
     }
 }
 
-void WczytajDekompresja(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciowego)
+void wczytaj_dekompresje(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciowego)
 {
 
-    // Otwieranie pliku.
+    
     FILE *plik = fopen(nazwa_pliku_wejsciowego, "rb");
     if (plik == NULL)
     {
@@ -227,17 +226,17 @@ void WczytajDekompresja(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjscio
         fseek(plik, 0, SEEK_END);
         long long int RozmiarPliku = ftell(plik);
         fseek(plik, 0, 0);
-        long long int RozmiarTablicy = RozmiarPliku / (sizeof(indeks) + sizeof(char));
-        // Alokacja pami�ci.
-        indeks *idx = (indeks *)malloc(sizeof(indeks) * RozmiarTablicy); // tablica indeks�w
-        char *znak = (char *)malloc(sizeof(char) * RozmiarTablicy);      // tablica znak�w
+        long long int rozmiar_tablicy = RozmiarPliku / (sizeof(indeks) + sizeof(char));
+        
+        indeks *idx = (indeks *)malloc(sizeof(indeks) * rozmiar_tablicy); 
+        char *znak = (char *)malloc(sizeof(char) * rozmiar_tablicy);      
         if (idx == NULL || znak == NULL)
         {
             exit(0);
         }
         else
         {
-            // Kopiowanie zawarto�ci pliku do bufora.
+            
             long long int i = 0;
             while (1)
             {
@@ -248,9 +247,9 @@ void WczytajDekompresja(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjscio
                 i++;
             }
 
-            Dekompresja(idx, znak, RozmiarTablicy, nazwa_pliku_wyjsciowego);
+            dekompresuj(idx, znak, rozmiar_tablicy, nazwa_pliku_wyjsciowego);
 
-            // Uwolnienie bufora.
+           
             free(idx);
             free(znak);
 
@@ -259,19 +258,19 @@ void WczytajDekompresja(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjscio
     }
 }
 
-void UsunSlownik(drzewo *Drzewo)
+void usun_slownik(drzewo *drzewo)
 {
-    if (Drzewo != NULL)
+    if (drzewo != NULL)
     {
-        lista *PoprzednieDziecko = NULL;
-        while (Drzewo->dziecko)
+        lista *poprzednie_dziecko = NULL;
+        while (drzewo->dziecko)
         {
-            UsunSlownik(&(Drzewo->dziecko->Node));
-            PoprzednieDziecko = Drzewo->dziecko;
-            Drzewo->dziecko = Drzewo->dziecko->pNext;
-            free(PoprzednieDziecko);
+            usun_slownik(&(drzewo->dziecko->wezel));
+            poprzednie_dziecko = drzewo->dziecko;
+            drzewo->dziecko = drzewo->dziecko->nastepny;
+            free(poprzednie_dziecko);
         }
-        free(Drzewo->dziecko);
-        UsunSlownik(Drzewo->dziecko);
+        free(drzewo->dziecko);
+        usun_slownik(drzewo->dziecko);
     }
 }
