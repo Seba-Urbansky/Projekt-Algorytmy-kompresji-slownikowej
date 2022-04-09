@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1649529167 source:c:\users\wojciech\documents\github\projekt-algorytmy-kompresji-slownikowej\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"lz78.h"
+
+1649526917 c:\users\wojciech\documents\github\projekt-algorytmy-kompresji-slownikowej\lz78.h
+	<stdio.h>
+	<stdlib.h>
+
+1649526917 source:c:\users\wojciech\documents\github\projekt-algorytmy-kompresji-slownikowej\lz78.c
+	<stdio.h>
+	<stdlib.h>
+	<limits.h>
+	"lz78.h"
+
