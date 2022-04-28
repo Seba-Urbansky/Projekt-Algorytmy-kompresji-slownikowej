@@ -3,97 +3,80 @@
 #include <string.h>
 #include "lzw_algorytmy.c"
 #include "lzw_plik.c" 
-#include "lz78.h"
+#include "lzw.h"
 #include "lzw_tablica.c" 
 
 
-void kompresuj_LZW(FILE *inputFile, FILE *outputFile) {    
-    int prefix = getc(inputFile);
+void kompresuj_LZW(FILE *wejscie_plik, FILE *wyjscie_plik) {    
+    int prefiks = getc(wejscie_plik);
     if (prefix == EOF) {
         return;
     }
-    int character;
+    int postac;
 
-    int nextCode;
-    int index;
+    int nastepny_kod;
+    int indeks;
+ 
+    nastepny_kod = 256; 
+    slownik_w_tym();
     
-    // LZW starts out with a dictionary of 256 characters (in the case of 8 codeLength) and uses those as the "standard"
-    //  character set.
-    nextCode = 256; // next code is the next available string code
-    dictionaryInit();
-    
-    // while (there is still data to be read)
-    while ((character = getc(inputFile)) != (unsigned)EOF) { // ch = read a character;
+    while ((postac = getc(wejscie_plik)) != (unsigned)EOF) { 
         
-        // if (dictionary contains prefix+character)
-        if ((index = dictionaryLookup(prefix, character)) != -1) prefix = index; // prefix = prefix+character
-        else { // ...no, try to add it
-            // encode s to output file
-            pisz_binarnie(outputFile, prefix);
+        if ((indeks = przeglad_slownika(prefiks, postac)) != -1) prefiks = indeks; 
+        else {
             
-            // add prefix+character to dictionary
-            if (nextCode < dictionarySize) dictionaryAdd(prefix, character, nextCode++);
+            pisz_binarnie(wyjscie_plik, prefiks);
             
-            // prefix = character
-            prefix = character; //... output the last string after adding the new one
+
+            if (nastepny_kod < slownik_wielkosc) slownik_dodaj(prefiks, postac, nastepny_kod++);
+            prefiks = postac; 
         }
     }
-    // encode s to output file
-    pisz_binarnie(outputFile, prefix); // output the last code
+    pisz_binarnie(wyjscie_plik, prefiks); 
     
-    if (resztki > 0) fputc(resztki_bity << 4, outputFile);
+    if (resztki > 0) fputc(resztki_bity << 4, wyjscie_plik);
     
-    // free the dictionary here
-    dictionaryDestroy();
+    slownik_zniszcz();
 }
 
-// decompression
-// to reconstruct a string from an index we need to traverse the dictionary strings backwards, following each
-//   successive prefix index until this prefix index is the empty index
-void dekompresuj_LZW(FILE * inputFile, FILE * outputFile) {
-    // int prevcode, currcode
-    int previousCode; int currentCode;
-    int nextCode = 256; // start with the same dictionary of 256 characters
+void dekompresuj_LZW(FILE * wejscie_plik, FILE * wyjscie_plik) {
+   
+    int wczesniejszy_kod; int aktualny_kod;
+    int nastepny_kod = 256; 
 
-    int firstChar;
-    
-    // prevcode = read in a code
-    previousCode = czytaj_binarnie(inputFile);
-    if (previousCode == 0) {
+    int pierwszy_char;
+
+    wczesniejszy_kod = czytaj_binarnie(wejscie_plik);
+    if (wczesniejszy_kod == 0) {
         return;
     }
-    fputc(previousCode, outputFile);
+    fputc(wczesniejszy_kod, wyjscie_plik);
     
-    // while (there is still data to read)
-    while ((currentCode = czytaj_binarnie(inputFile)) > 0) { // currcode = read in a code
+    while ((aktualny_kod = czytaj_binarnie(wejscie_plik)) > 0) { 
     
-        if (currentCode >= nextCode) {
-            fputc(firstChar = decode(previousCode, outputFile), outputFile); // S+C+S+C+S exception [2.]
-            //printf("%c", firstChar);
-            //appendCharacter(firstChar = decode(previousCode, outputFile));
-        } else firstChar = decode(currentCode, outputFile); // first character returned! [1.]
+        if (aktualny_kod >= nastepnykod) {
+            fputc(pierwszy_char = dekoduj_lzw(wczesniejszy_kod, wyjscie_plik), wyjscie_plik); 
+            
+        } else pierwszy_char = dekoduj_lzw(aktualny_kod, wyjscie_plik); 
         
-        // add a new code to the string table
-        if (nextCode < dictionarySize) dictionaryArrayAdd(previousCode, firstChar, nextCode++);
-        
-        // prevcode = currcode
-        previousCode = currentCode;
+        if (nastepny_kod < slownik_wielkosc) slownik_tablica_dodaj(wczesniejszy_kod, pierwszy_char, nastepny_kod++);
+        wczesniejszy_kod = aktualny_kod;
     }
-    //printf("\n");
+   
 }
 
-int decode(int code, FILE * outputFile) {
-    int character; int temp;
 
-    if (code > 255) { // decode
-        character = dictionaryArrayCharacter(code);
-        temp = decode(dictionaryArrayPrefix(code), outputFile); // recursion
+int dekoduj_lzw(int kod, FILE * wyjscie_plik) {
+    int postac; int tymczasowa;
+
+    if (kod > 255) { 
+        postac = slownik_tablica_postac(kod);
+        tymczasowa = dekoduj_lzw(slownik_tablica_prefiks(kod), wyjscie_plik); 
     } else {
-        character = code; // ASCII
-        temp = code;
+        postac = kod; 
+        tymczasowa = kod;
     }
-    fputc(character, outputFile);
-    //printf("%c", character);
-    //appendCharacter(character);
-    return temp;
+    fputc(postac, wyjscie_plik);
+   
+    return tymczasowa;
 }

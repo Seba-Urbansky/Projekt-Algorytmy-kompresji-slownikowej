@@ -3,25 +3,25 @@
 #include <stdio.h>
 #include "lzw.h"
 
-void pisz_binarnie(FILE * output, int kod);
-int czytaj_binarnie(FILE * input);
+void pisz_binarnie(FILE * wyjscie, int kod);
+int czytaj_binarnie(FILE * wejscie);
 
 int resztki = 0;
 int resztki_bity;
 
-void pisz_binarnie(FILE * output, int kod) {
+void pisz_binarnie(FILE * wyjscie, int kod) {
     if (resztki > 0) {
-        int previousCode = (resztki_bity << 4) + (kod >> 8);
+        int wczesniejszy_kod = (resztki_bity << 4) + (kod >> 8);
         
-        fputc(previousCode, output);
-        fputc(kod, output);
+        fputc(wczesniejszy_kod, wyjscie);
+        fputc(kod, wyjscie);
         
         resztki = 0; 
     } else {
         resztki_bity = kod & 0xF; 
         resztki = 1;
         
-        fputc(kod >> 4, output);
+        fputc(kod >> 4, wyjscie);
     }
 }
 

@@ -1,96 +1,74 @@
-/*
- * A singly linked list serving as a dictionary.
- * 
- */
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "lzw.h"
 enum {
-    emptyPrefix = -1 // empty prefix for ASCII characters
+    pusty_prefiks = -1 
 };
 
-// the "string" in the dictionary consists of the last byte of the string and an index to a prefix for that string
-struct DictNode {
-    int value; // the position in the list
-    int prefix; // prefix for byte > 255
-    int character; // the last byte of the string
-    struct DictNode *next;
-};
+struct slownik_wezel *slownik, *tail;
 
-void dictionaryInit();
-void appendNode(struct DictNode *node);
-void dictionaryDestroy();
-int dictionaryLookup(int prefix, int character);
-int dictionaryPrefix(int value);
-int dictionaryCharacter(int value);
-void dictionaryAdd(int prefix, int character, int value);
-
-// the dictionary
-struct DictNode *dictionary, *tail;
-
-// initialize the dictionary of ASCII characters @12bits
-void dictionaryInit() {
+void slownik_w_tym() {
     int i;
-    struct DictNode *node;
+    struct slownik_wezel *node;
     for (i = 0; i < 256; i++) { // ASCII
-        node = (struct DictNode *)malloc(sizeof(struct DictNode));
-        node->prefix = emptyPrefix;
-        node->character = i;
-        appendNode(node);
+        node = (struct slownik_wezel *)malloc(sizeof(struct slownik_wezel));
+        node->prefiks = pusty_prefiks;
+        node->postac = i;
+        dodaj_wezel(node);
     }       
 }
 
-// add node to the list
-void appendNode(struct DictNode *node) {
-    if (dictionary != NULL) tail->next = node;
-    else dictionary = node;
-    tail = node;
-    node->next = NULL;
+
+
+void dodaj_wezel(struct slownik_wezel *wezel) {
+    if (slownik != NULL) ogon->nastepny = wezel;
+    else slownik = wezel;
+    ogon = wezel;
+    wezel->nastepny = NULL;
 }
 
-// destroy the whole dictionary down to NULL
-void dictionaryDestroy() {
-    while (dictionary != NULL) {
-        dictionary = dictionary->next; /* the head now links to the next element */
+
+void slownik_zniszcz() {
+    while (slownik != NULL) {
+        slownik = slownik->nastepny; 
     }
 }
 
-// is prefix + character in the dictionary?
-int dictionaryLookup(int prefix, int character) {
-    struct DictNode *node;
-    for (node = dictionary; node != NULL; node = node->next) { // ...traverse forward
-        if (node->prefix == prefix && node->character == character) return node->value;
+int slownik_zajrzyj(int prefiks, int postac) {
+    struct slownik_wezel *wezel;
+    for (wezel = slownik; wezel != NULL; wezel = wezel->next) { 
+        if (wezel->prefiks == prefiks && wezel->postac == postac) return wezel->wartosclzw;
     }
-    return emptyPrefix;
+    return pusty_prefix;
 }
 
-int dictionaryPrefix(int value) {
-    struct DictNode *node;
-    for (node = dictionary; node != NULL; node = node->next) { // ...traverse forward
-        if (node->value == value) return node->prefix;
+int slownik_prefiks(int value) {
+    struct slownik_wezel *wezel;
+    for (wezel = slownik; wezel != NULL; wezel = wezel->nastepny) { 
+        if (wezel->wartosclzw == value) return wezel->prefiks;
     }
     return -1;
 }
 
-int dictionaryCharacter(int value) {
-    struct DictNode *node;
-    for (node = dictionary; node != NULL; node = node->next) { // ...traverse forward
-        if (node->value == value) {
-            //printf("\nNODE %i %i %i\n", node->value, node->prefix, node->character);
-            return node->character;
+int slownik_postac(int value) {
+    struct slownik_wezel *wezel;
+    for (wezel = slownik; wezel != NULL; wezel = wezel->nastepny) { 
+        if (wezel->wartosclzw == value) {
+           
+            return wezel->postac;
         }
     }
     return -1;
 }
 
-// add prefix + character to the dictionary
-void dictionaryAdd(int prefix, int character, int value) {
-    struct DictNode *node;
-    node = (struct DictNode *)malloc(sizeof(struct DictNode));
-    node->value = value;
-    node->prefix = prefix;
-    node->character = character;
-    //printf("\n(%i) = (%i) + (%i)\n", node->value, node->prefix, node->character);
-    appendNode(node);
+
+void slownik_dodaj(int prefiks, int postac, int wartosclzw) {
+    struct slownik_wezel *wezel;
+    wezel = (struct slownik_wezel *)malloc(sizeof(struct slownik_wezel));
+    wezel->wartosclzw = wartosclzw;
+    wezel->prefiks = prefiks;
+    wezel->postac = postac;
+    
+    dodaj_wezel(wezel);
 }
