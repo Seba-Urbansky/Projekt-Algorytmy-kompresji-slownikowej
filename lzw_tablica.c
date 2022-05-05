@@ -1,19 +1,17 @@
 #include <stdio.h>
-#include "lzw.h"
+#include "lzw_tablica.h"
 
+TablicaElement tablica[4096];
 
-Element_slownik Tablica_slownik[4095];
-
-
-void dodanie_tablicy_slownika(int prefiks, int postac, int warotosclzw) {
-    Tablica_slownik[warotosclzw].prefiks = prefiks;
-    Tablica_slownik[warotosclzw].postac = postac;
+void tablica_dodaj(int prefiks, int znak, int warotosclzw) {
+    tablica[warotosclzw].prefiks = prefiks;
+    tablica[warotosclzw].znak = znak;
 }
 
-int slownik_tablica_prefiks(int wartosc) {
-    return Tablica_slownik[wartosc].prefiks;
+int tablica_prefiks(int wartosc) {
+    return tablica[wartosc].prefiks;
 }
 
-int slownik_tablica_postac(int wartosc) {
-    return Tablica_slownik[wartosc].postac;
+int tablica_znak(int wartosc) {
+    return tablica[wartosc].znak;
 }
