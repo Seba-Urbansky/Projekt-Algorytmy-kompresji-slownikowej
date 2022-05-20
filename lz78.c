@@ -3,6 +3,26 @@
 #include <limits.h>
 
 #include "lz78.h"
+/*! \fn void dodaj_potomka(Lista **dziecko, indeks idx, char znak)
+    \brief
+    Jesli wskaznik na dziecko jest pusty alkokujemy pamiec na dziecko
+    - Nastepnie jesli wskaznik na dziecko jest pusty to wtedy wychodzimy z program
+    - W przeciwnym wypadku idx jest rowne wskaznikowi dziecka na wezel idx, znak jest
+    rowny wskaznikowi dziecka na wezel znaku, natomiast wskaznik dziecka na wezel dziecka
+    sa puste, wskaznik dziecka na nastepny tez jest pusty
+    - W nastepnym przeciwnym wypadku wskaznik na aktualny jest rowny wskaznikowi na dziecko
+    - Korzystam z warunku while i w nim jesli wskaznik akutualnego na nastepny nie jest pusty
+    i aktualny jest rowny wskaznikowi aktualnego na nastepny
+    - Jesli wskaznik aktualnego na nastepny jest pusty to wtedy wychodzimy z programu
+    - Nastepnie w przeciwnym wypadku idx jest rowne wskaznikowi aktualnego na nastepny element oraz 
+    na wezel idx, znak jest rowny wskaznikowi aktualnego na nastepny element oraz 
+    na wezel znaku, natomiast wskaznik aktualnego na nastepny i na wezel dziecka sa puste,
+    wskaznik aktualnego na nastepny sa puste
+
+    \param dziecko 
+    \param idx
+    \param znak
+*/
 
 void dodaj_potomka(Lista **dziecko, indeks idx, char znak)
 {
@@ -43,6 +63,21 @@ void dodaj_potomka(Lista **dziecko, indeks idx, char znak)
     }
 }
 
+/*! \fn Lista *wyszukaj_potomka(Lista *dziecko, char znak)
+    \brief
+    Funkcja ta jest odpowiedzialna za wyszukiwanie potomka.
+    - Jesli dziecko nie jest pusta wartoscia to we while jesli dziecko nie jest pusta watoscia
+    oraz jesli znak jest rowny wskaznikowi dziecka na wezel znaku to wtedy dziecko jest rowne
+    wskaznikowi dziecka na nastepny element
+    - Jesli dziecko nie jest pusta wartoscia oraz znak jest rowny wskaznikowi dziecka na wezel znak
+    to wtedy zwroc dziecko
+    - a na koncu zwroc pusta wartosc
+
+    \param dziecko 
+    \param znak
+   
+*/
+
 Lista *wyszukaj_potomka(Lista *dziecko, char znak)
 {
     if (dziecko != NULL)
@@ -54,6 +89,18 @@ Lista *wyszukaj_potomka(Lista *dziecko, char znak)
     }
     return NULL;
 }
+
+/*! \fn Wezel *wyszukaj(Wezel *rodzic, char *znak, long long int *pozycja, long long int dlugosc_napisu)
+    \brief
+    Funkcja 
+
+    \param rodzic
+    \param znak
+    \param pozycja
+    
+   
+*/
+
 
 Wezel *wyszukaj(Wezel *rodzic, char *znak, long long int *pozycja, long long int dlugosc_napisu)
 {
