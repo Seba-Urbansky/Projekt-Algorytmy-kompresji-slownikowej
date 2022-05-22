@@ -14,12 +14,12 @@
     - Korzystam z warunku while i w nim jesli wskaznik akutualnego na nastepny nie jest pusty
     i aktualny jest rowny wskaznikowi aktualnego na nastepny
     - Jesli wskaznik aktualnego na nastepny jest pusty to wtedy wychodzimy z programu
-    - Nastepnie w przeciwnym wypadku idx jest rowne wskaznikowi aktualnego na nastepny element oraz 
-    na wezel idx, znak jest rowny wskaznikowi aktualnego na nastepny element oraz 
+    - Nastepnie w przeciwnym wypadku idx jest rowne wskaznikowi aktualnego na nastepny element oraz
+    na wezel idx, znak jest rowny wskaznikowi aktualnego na nastepny element oraz
     na wezel znaku, natomiast wskaznik aktualnego na nastepny i na wezel dziecka sa puste,
     wskaznik aktualnego na nastepny sa puste
 
-    \param dziecko 
+    \param dziecko
     \param idx
     \param znak
 */
@@ -73,9 +73,9 @@ void dodaj_potomka(Lista **dziecko, indeks idx, char znak)
     to wtedy zwroc dziecko
     - a na koncu zwroc pusta wartosc
 
-    \param dziecko 
+    \param dziecko
     \param znak
-   
+
 */
 
 Lista *wyszukaj_potomka(Lista *dziecko, char znak)
@@ -93,29 +93,27 @@ Lista *wyszukaj_potomka(Lista *dziecko, char znak)
 /*! \fn Wezel *wyszukaj(Wezel *rodzic, char *znak, long long int *pozycja, long long int dlugosc_napisu)
     \brief
     Funkcja w petli while jesli rodzic nie jest pusty, to wyszukuje potomka.
-    - Jesli wskaznik na pozycje jest mniejszy od dlugosci napisu - 1 oraz dziecko nie 
-    jest puste to wtedy dodajemy do pozycji, a rodzic jest rowny wskaznikowi dziecka na wezel, 
+    - Jesli wskaznik na pozycje jest mniejszy od dlugosci napisu - 1 oraz dziecko nie
+    jest puste to wtedy dodajemy do pozycji, a rodzic jest rowny wskaznikowi dziecka na wezel,
     charakter jest rowny znakowi(*pozycja)
 
     \param rodzic
     \param znak
     \param pozycja
     \param dlugosc_napisu
-   
-    
-   
-*/
 
+
+
+*/
 
 Wezel *wyszukaj(Wezel *rodzic, char *znak, long long int *pozycja, long long int dlugosc_napisu)
 {
     Lista *dziecko;
     char character = znak[(*pozycja)];
 
-    
     while (rodzic != NULL)
     {
-        dziecko = wyszukaj_potomka(rodzic->dziecko, character); 
+        dziecko = wyszukaj_potomka(rodzic->dziecko, character);
 
         if ((*pozycja) < dlugosc_napisu - 1 && dziecko != NULL)
         {
@@ -134,7 +132,7 @@ Wezel *wyszukaj(Wezel *rodzic, char *znak, long long int *pozycja, long long int
     Na poczatku funkcji deklarujemy strumien wyjsciowy pliku oraz wezel slownika.
     - Jesli slownik jest pusty to wtedy wychodzimy z programu
     - W przeciwnym wypadku wskazujemy slownikiem na idx i to jest rowne 0, wskazujemy
-    slownikiem na dziecko i to jest pusta wartoscia, pozycje deklarujemy jako 0, oraz nowy 
+    slownikiem na dziecko i to jest pusta wartoscia, pozycje deklarujemy jako 0, oraz nowy
     indeks jako 1
     - W petli while dopoki pozycja jest mniejsza od dlugosci napisu, definujemy wskaznik
     na rodzica
@@ -146,9 +144,8 @@ Wezel *wyszukaj(Wezel *rodzic, char *znak, long long int *pozycja, long long int
     \param znak
     \param nazwa_pliku_wyjsciowego
     \param dlugosc_napisu
-   
-*/
 
+*/
 
 void kompresuj(char *znak, long long int dlugosc_napisu, char *nazwa_pliku_wyjsciowego)
 {
@@ -162,22 +159,22 @@ void kompresuj(char *znak, long long int dlugosc_napisu, char *nazwa_pliku_wyjsc
     else
     {
         slownik->idx = 0;
-        
+
         slownik->dziecko = NULL;
 
-        long long int pozycja = 0;    
-        long long int nowy_indeks = 1; 
+        long long int pozycja = 0;
+        long long int nowy_indeks = 1;
 
         while (pozycja < dlugosc_napisu)
         {
-            Wezel *rodzic = wyszukaj(slownik, znak, &pozycja, dlugosc_napisu); 
+            Wezel *rodzic = wyszukaj(slownik, znak, &pozycja, dlugosc_napisu);
 
             if (pozycja < dlugosc_napisu)
             {
-                if (nowy_indeks < UCHAR_MAX) 
+                if (nowy_indeks < UCHAR_MAX)
                 {
-                    fwrite(&(rodzic->idx), sizeof(indeks), 1, wyjsciowy); 
-                    fwrite(&znak[pozycja], sizeof(char), 1, wyjsciowy);   
+                    fwrite(&(rodzic->idx), sizeof(indeks), 1, wyjsciowy);
+                    fwrite(&znak[pozycja], sizeof(char), 1, wyjsciowy);
                     dodaj_potomka(&(rodzic->dziecko), nowy_indeks, znak[pozycja]);
                     pozycja++;
                     nowy_indeks++;
@@ -202,15 +199,13 @@ void kompresuj(char *znak, long long int dlugosc_napisu, char *nazwa_pliku_wyjsc
     indeks poprzedni_indeks z idx od pozycji
     - Dopoki poprzedni indeks nie jest rowny 0 to wtedy poprzedni indeks jest rowny
     idx(a w nim poprzedniemu_indeksowi - 1), dodajemy do licznika oraz zwracamy ten licznik
-    
+
 
     \param idx
     \param pozycja
-   
-   
+
+
 */
-
-
 
 long long int dlugosc_slowa(indeks *idx, long long int pozycja)
 {
@@ -230,7 +225,7 @@ long long int dlugosc_slowa(indeks *idx, long long int pozycja)
     \brief
     Na poczatku indeks indeks_poprzedni jest rowny id(pozycje), zmienna pos jest rowna dlugosci slowa -1,
     slowo(pos) jest rowne znakowi(pozycji)
-    - Dopoki indeks_poprzedni nie jest rowny 0, to zmniejszamy pos oraz slowo(pos) jest rowne 
+    - Dopoki indeks_poprzedni nie jest rowny 0, to zmniejszamy pos oraz slowo(pos) jest rowne
     znakowi(indeks_poprzedni - 1), indeks_poprzedni jest rowny idx(indeks_poprzedni - 1)
     - A na koncu zwracamy slowo
 
@@ -263,14 +258,16 @@ char *czytaj_slowo(indeks *idx, char *znak, long long int pozycja, long long int
    Najpierw definiujemy strumien wyjsciowy, deklarujemy pozycje jako 0.
    - Dopoki pozycja jest mniejsza od rozmiaru_tablic, to wtedy rozmiar slowa jest rowny
    dlugosci_slowa(idx, pozycji), wskaznik na slowo jest rowny alokacji pamieci na wskaznik
-   rozmiaru slowa, a slowo jest rowne funkcji czytaj_slowo
+   rozmiaru slowa, a slowo jest rowne funkcji czytaj_slowo z odpowiednimi parametrami,
+   potem korzystam z fwrite i free dla odpowiednich paramatrow, zwiekszam pozycje oraz zamykam 
+   plik.
 
 
     \param idx
     \param znak
     \param rozmiar_tablic
     \param nazwa_pliku_wyjsciowego
-    
+
 */
 
 void dekompresuj(indeks *idx, char *znak, long long int rozmiar_tablic, char *nazwa_pliku_wyjsciowego)
@@ -291,9 +288,26 @@ void dekompresuj(indeks *idx, char *znak, long long int rozmiar_tablic, char *na
     fclose(wyjsciowy);
 }
 
+/*! \fn void wczytaj_kompresje(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciowego)
+    \brief
+   
+    Zaczynamy od otwarcia pliku wejsciowego.
+    - Jesli plik jest pusty to wtedy wychodzimy z programu.
+    - W przeciwnym wypadku korzystamy z funkcji fseek dla pliku
+    - Jesli napis jest pusta wartoscia to wychodzimy z programu, w przeciwnym wypadki i=0
+    - Dopoki jest wartosc 1 uzywamy funkcji fread
+    - Jesli funkcja foef(plik) to zatrzymujemy program i zwiekszamy i, a na koncu
+    uzywam funkcji kompresuj, free, fclose
+
+    \param nazwa_pliku_wejsciowego
+    \param nazwa_pliku_wyjsciowego
+   
+
+*/
+
 void wczytaj_kompresje(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciowego)
 {
-    
+
     FILE *plik = fopen(nazwa_pliku_wejsciowego, "rb");
     if (plik == NULL)
     {
@@ -312,7 +326,7 @@ void wczytaj_kompresje(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciow
         }
         else
         {
-            
+
             long long int i = 0;
             while (1)
             {
@@ -324,7 +338,6 @@ void wczytaj_kompresje(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciow
 
             kompresuj(napis, rozmiar_pliku, nazwa_pliku_wyjsciowego);
 
-           
             free(napis);
 
             fclose(plik);
@@ -332,10 +345,25 @@ void wczytaj_kompresje(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciow
     }
 }
 
+/*! \fn void wczytaj_dekompresje(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciowego)
+    \brief
+   Ta funkcja odpowiedzialna jest za działanie zwiazanie z wczytaniem dekompresji.
+   - Jesli plik jest pusty to wtedy wychodzimy z programu.
+   - W przeciwnym wypadku uzywamy funkcji fseek dla pliku, rozmiar_pliku jest rowny funkcji ftell(plik),
+   alokujemy pamiec ze wskaznika idx i znak na *rozmiar tablicy
+   - Jesli idx jest pusty oraz znak jest pusty to wtedy wychodzimy z programu, w przeciwnym wypadku
+   i=0, uzywamy funkcji czytajacej dla idx i znaku i uzywamy funkcji dekompresuj, free i fclose.
+    \param nazwa_pliku_wejsciowego
+    \param nazwa_pliku_wyjsciowego
+   
+
+*/
+
+
+
 void wczytaj_dekompresje(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciowego)
 {
 
-    
     FILE *plik = fopen(nazwa_pliku_wejsciowego, "rb");
     if (plik == NULL)
     {
@@ -347,16 +375,16 @@ void wczytaj_dekompresje(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsci
         long long int rozmiar_pliku = ftell(plik);
         fseek(plik, 0, 0);
         long long int rozmiar_tablicy = rozmiar_pliku / (sizeof(indeks) + sizeof(char));
-        
-        indeks *idx = (indeks *)malloc(sizeof(indeks) * rozmiar_tablicy); 
-        char *znak = (char *)malloc(sizeof(char) * rozmiar_tablicy);      
+
+        indeks *idx = (indeks *)malloc(sizeof(indeks) * rozmiar_tablicy);
+        char *znak = (char *)malloc(sizeof(char) * rozmiar_tablicy);
         if (idx == NULL || znak == NULL)
         {
             exit(0);
         }
         else
         {
-            
+
             long long int i = 0;
             while (1)
             {
@@ -369,7 +397,6 @@ void wczytaj_dekompresje(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsci
 
             dekompresuj(idx, znak, rozmiar_tablicy, nazwa_pliku_wyjsciowego);
 
-           
             free(idx);
             free(znak);
 
@@ -390,7 +417,7 @@ void usun_slownik(Wezel *drzewo)
             drzewo->dziecko = drzewo->dziecko->nastepny;
             free(poprzednie_dziecko);
         }
-        
+
         usun_slownik(&(drzewo->dziecko->wezel));
         free(drzewo->dziecko);
     }
