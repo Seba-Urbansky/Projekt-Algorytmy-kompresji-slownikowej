@@ -92,11 +92,16 @@ Lista *wyszukaj_potomka(Lista *dziecko, char znak)
 
 /*! \fn Wezel *wyszukaj(Wezel *rodzic, char *znak, long long int *pozycja, long long int dlugosc_napisu)
     \brief
-    Funkcja 
+    Funkcja w petli while jesli rodzic nie jest pusty, to wyszukuje potomka.
+    - Jesli wskaznik na pozycje jest mniejszy od dlugosci napisu - 1 oraz dziecko nie 
+    jest puste to wtedy dodajemy do pozycji, a rodzic jest rowny wskaznikowi dziecka na wezel, 
+    charakter jest rowny znakowi(*pozycja)
 
     \param rodzic
     \param znak
     \param pozycja
+    \param dlugosc_napisu
+   
     
    
 */
@@ -123,6 +128,27 @@ Wezel *wyszukaj(Wezel *rodzic, char *znak, long long int *pozycja, long long int
     }
     return rodzic;
 }
+
+/*! \fn void kompresuj(char *znak, long long int dlugosc_napisu, char *nazwa_pliku_wyjsciowego)
+    \brief
+    Na poczatku funkcji deklarujemy strumien wyjsciowy pliku oraz wezel slownika.
+    - Jesli slownik jest pusty to wtedy wychodzimy z programu
+    - W przeciwnym wypadku wskazujemy slownikiem na idx i to jest rowne 0, wskazujemy
+    slownikiem na dziecko i to jest pusta wartoscia, pozycje deklarujemy jako 0, oraz nowy 
+    indeks jako 1
+    - W petli while dopoki pozycja jest mniejsza od dlugosci napisu, definujemy wskaznik
+    na rodzica
+    -Jesli pozycja jest mniejsza od dlugosci napisu oraz jesli nowy indeks jest mniejszy
+    od UCHAR_MAX to wtedy w fwrite ustalamy strumienie wyjsciowe i korzystamy z funkcji
+    dodaj potomka, zwiekszamy pozycje oraz nowy_indeks, w przeciwnym wypadku korzystamy
+    z funkcji usun_slownik i wychodzimy z programu
+
+    \param znak
+    \param nazwa_pliku_wyjsciowego
+    \param dlugosc_napisu
+   
+*/
+
 
 void kompresuj(char *znak, long long int dlugosc_napisu, char *nazwa_pliku_wyjsciowego)
 {
@@ -170,6 +196,22 @@ void kompresuj(char *znak, long long int dlugosc_napisu, char *nazwa_pliku_wyjsc
     fclose(wyjsciowy);
 }
 
+/*! \fn long long int dlugosc_slowa(indeks *idx, long long int pozycja)
+    \brief
+    Na poczatku funkcji deklaujemy licznik, ktory na poczatku jest rowny 1 oraz zrownujemy
+    indeks poprzedni_indeks z idx od pozycji
+    - Dopoki poprzedni indeks nie jest rowny 0 to wtedy poprzedni indeks jest rowny
+    idx(a w nim poprzedniemu_indeksowi - 1), dodajemy do licznika oraz zwracamy ten licznik
+    
+
+    \param idx
+    \param pozycja
+   
+   
+*/
+
+
+
 long long int dlugosc_slowa(indeks *idx, long long int pozycja)
 {
     long long int licznik = 1;
@@ -183,6 +225,22 @@ long long int dlugosc_slowa(indeks *idx, long long int pozycja)
 
     return licznik;
 }
+
+/*! \fn char *czytaj_slowo(indeks *idx, char *znak, long long int pozycja, long long int dlugosc_slowa, char *slowo)
+    \brief
+    Na poczatku indeks indeks_poprzedni jest rowny id(pozycje), zmienna pos jest rowna dlugosci slowa -1,
+    slowo(pos) jest rowne znakowi(pozycji)
+    - Dopoki indeks_poprzedni nie jest rowny 0, to zmniejszamy pos oraz slowo(pos) jest rowne 
+    znakowi(indeks_poprzedni - 1), indeks_poprzedni jest rowny idx(indeks_poprzedni - 1)
+    - A na koncu zwracamy slowo
+
+
+    \param idx
+    \param znak
+    \param pozycja
+    \param dlugosc_slowa
+    \param slowo
+*/
 
 char *czytaj_slowo(indeks *idx, char *znak, long long int pozycja, long long int dlugosc_slowa, char *slowo)
 {
@@ -199,6 +257,18 @@ char *czytaj_slowo(indeks *idx, char *znak, long long int pozycja, long long int
 
     return slowo;
 }
+
+/*! \fn void dekompresuj(indeks *idx, char *znak, long long int rozmiar_tablic, char *nazwa_pliku_wyjsciowego)
+    \brief
+   
+
+
+    \param idx
+    \param znak
+    \param rozmiar_tablic
+    \param nazwa_pliku_wyjsciowego
+    
+*/
 
 void dekompresuj(indeks *idx, char *znak, long long int rozmiar_tablic, char *nazwa_pliku_wyjsciowego)
 {
