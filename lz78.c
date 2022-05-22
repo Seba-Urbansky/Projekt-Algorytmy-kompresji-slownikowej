@@ -405,6 +405,17 @@ void wczytaj_dekompresje(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsci
     }
 }
 
+/*! \fn void usun_slownik(Wezel *drzewo)
+    \brief
+    - Jesli drzewo nie jest pusta wartoscia to wtedy poprzednie dziecko w liscie jest pusta wartoscia
+    - Dopoki wskaznik drzewa na dziecko to uzywamy funkcji usun_slownik, a poprzednie dziecko jest rowne
+    wskaznikowi drzewa na dziecko, wskaznik drzewa na dziecko jest rowne wskaznikowi na drzewa na dziecko
+    i na nastepny i uwalniamy pamiec od poprzedniego dziecka.
+   
+    \param drzewo
+   
+*/
+
 void usun_slownik(Wezel *drzewo)
 {
     if (drzewo != NULL)

@@ -4,9 +4,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 typedef unsigned char indeks;
 
+
+/*! \fn typedef struct WezelStruktura
+    \brief
+    To jest struktura calego wezla
+    Zadeklarowane są w niej idx, znak, dziecko.
+   
+*/
 
 typedef struct WezelStruktura
 {
