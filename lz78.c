@@ -260,7 +260,10 @@ char *czytaj_slowo(indeks *idx, char *znak, long long int pozycja, long long int
 
 /*! \fn void dekompresuj(indeks *idx, char *znak, long long int rozmiar_tablic, char *nazwa_pliku_wyjsciowego)
     \brief
-   
+   Najpierw definiujemy strumien wyjsciowy, deklarujemy pozycje jako 0.
+   - Dopoki pozycja jest mniejsza od rozmiaru_tablic, to wtedy rozmiar slowa jest rowny
+   dlugosci_slowa(idx, pozycji), wskaznik na slowo jest rowny alokacji pamieci na wskaznik
+   rozmiaru slowa, a slowo jest rowne funkcji czytaj_slowo
 
 
     \param idx
