@@ -1,0 +1,59 @@
+\hypertarget{lz78_8h_source}{}\doxysection{lz78.\+h}
+\label{lz78_8h_source}\index{/Users/sebastian/Projects/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/lz78.h@{/Users/sebastian/Projects/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/lz78.h}}
+\mbox{\hyperlink{lz78_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef LZ78\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define LZ78\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \mbox{\hyperlink{lz78_8h_af94b82ab3880d9abb2b7243ee9e9ac8f}{indeks}};}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 }
+\DoxyCodeLine{17 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_wezel_struktura}{WezelStruktura}}}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19     \mbox{\hyperlink{lz78_8h_af94b82ab3880d9abb2b7243ee9e9ac8f}{indeks}} \mbox{\hyperlink{struct_wezel_struktura_a8644404bc7c56a62f5be05e57ae74b42}{idx}};}
+\DoxyCodeLine{20     \textcolor{keywordtype}{char} \mbox{\hyperlink{struct_wezel_struktura_a76836f45fa6968e6b5fe38188bedfba0}{znak}};}
+\DoxyCodeLine{21     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_lista_struktura}{ListaStruktura}}* \mbox{\hyperlink{struct_wezel_struktura_ae10e43eab27fbce99bc63a3d56931f78}{dziecko}};}
+\DoxyCodeLine{22 \} \mbox{\hyperlink{lz78_8h_ac7f50152b4d7d51e99291f146c583bc4}{Wezel}};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 }
+\DoxyCodeLine{32 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_lista_struktura}{ListaStruktura}}}
+\DoxyCodeLine{33 \{}
+\DoxyCodeLine{34     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_wezel_struktura}{WezelStruktura}} \mbox{\hyperlink{struct_lista_struktura_a4f0e4db0938a3788e865587fa7962638}{wezel}};}
+\DoxyCodeLine{35     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_lista_struktura}{ListaStruktura}}* \mbox{\hyperlink{struct_lista_struktura_a0b5ed7c3043de5c557ce0e600a687ec3}{nastepny}};}
+\DoxyCodeLine{36 \} \mbox{\hyperlink{lz78_8h_a219bc05e6851086285f6b4c7009ee650}{Lista}};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{45 \textcolor{keywordtype}{void} \mbox{\hyperlink{lz78_8h_aa6c5ff7aeb69008a3ecee5945bffeb59}{dodaj\_potomka}}(\mbox{\hyperlink{struct_lista_struktura}{Lista}}** dziecko, \mbox{\hyperlink{lz78_8h_af94b82ab3880d9abb2b7243ee9e9ac8f}{indeks}} idx, \textcolor{keywordtype}{char} znak);}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \mbox{\hyperlink{struct_lista_struktura}{Lista}}* \mbox{\hyperlink{lz78_8h_af363f3f6a27cfcb6c2050d9b3f00adfd}{wyszukaj\_potomka}}(\mbox{\hyperlink{struct_lista_struktura}{Lista}}* dziecko, \textcolor{keywordtype}{char} znak);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \mbox{\hyperlink{struct_wezel_struktura}{Wezel}}* \mbox{\hyperlink{lz78_8h_a926cc1fd5fd96682a26eda59b600dbfd}{wyszukaj}}(\mbox{\hyperlink{struct_wezel_struktura}{Wezel}}* rodzic, \textcolor{keywordtype}{char}* znak, \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int}* pozycja, \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} dlugosc\_napisu);}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{keywordtype}{void} \mbox{\hyperlink{lz78_8h_a024f7459405dd43d84719543e90a3647}{kompresuj}}(\textcolor{keywordtype}{char}* znak, \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} dlugosc\_napisu, \textcolor{keywordtype}{char}* nazwa\_pliku\_wyjsciowego);}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{lz78_8h_ab6633386a4442eba1afa421a5adcb537}{dlugosc\_slowa}}(\mbox{\hyperlink{lz78_8h_af94b82ab3880d9abb2b7243ee9e9ac8f}{indeks}}* idx, \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} pozycja);}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{keywordtype}{char}* \mbox{\hyperlink{lz78_8h_a7d511bcf241015f2ca6e5f90608882a3}{czytaj\_slowo}}(\mbox{\hyperlink{lz78_8h_af94b82ab3880d9abb2b7243ee9e9ac8f}{indeks}}* idx, \textcolor{keywordtype}{char}* znak, \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} pozycja, \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{lz78_8h_ab6633386a4442eba1afa421a5adcb537}{dlugosc\_slowa}}, \textcolor{keywordtype}{char}* slowo);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 \textcolor{keywordtype}{void} \mbox{\hyperlink{lz78_8h_ab8c30aadbaa2bd29297f01e76dbe25bc}{dekompresuj}}(\mbox{\hyperlink{lz78_8h_af94b82ab3880d9abb2b7243ee9e9ac8f}{indeks}}* idx, \textcolor{keywordtype}{char}* znak, \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} rozmiar\_tablic, \textcolor{keywordtype}{char}* nazwa\_pliku\_wyjsciowego);}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{keywordtype}{void} \mbox{\hyperlink{lz78_8h_a2e8534b61160c6d88d8a18f5b393bed8}{wczytaj\_kompresje}}(\textcolor{keywordtype}{char}* nazwa\_pliku\_wejsciowego, \textcolor{keywordtype}{char}* nazwa\_pliku\_wyjsciowego);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \textcolor{keywordtype}{void} \mbox{\hyperlink{lz78_8h_ab346a026796c0fd261cc3bd093f648f1}{wczytaj\_dekompresje}}(\textcolor{keywordtype}{char}* nazwa\_pliku\_wejsciowego, \textcolor{keywordtype}{char}* nazwa\_pliku\_wyjsciowego);}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{keywordtype}{void} \mbox{\hyperlink{lz78_8h_a8546595fddd624e6866f2001d8babe6f}{usun\_slownik}}(\mbox{\hyperlink{struct_wezel_struktura}{Wezel}}* drzewo);}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

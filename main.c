@@ -20,9 +20,9 @@ void wyjscie()
 {
 }
 
-/*! \fn Menu
+/*! \fn void menu()
     \brief
-    Pod spodem jest menu.
+    Ponizej jest menu calego programu.
    
 */
 

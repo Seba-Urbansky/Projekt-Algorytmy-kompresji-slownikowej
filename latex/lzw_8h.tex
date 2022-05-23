@@ -1,0 +1,199 @@
+\hypertarget{lzw_8h}{}\doxysection{/\+Users/sebastian/\+Projects/\+Ai\+SD.PRO.1ID15\+B.\+SIWEK.\+URBAŃ\+SKI.\+KM.2/\+Ai\+SD.PRO.1ID15\+B.\+SIWEK.\+URBAŃ\+SKI.\+KM.2/lzw.h File Reference}
+\label{lzw_8h}\index{/Users/sebastian/Projects/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/lzw.h@{/Users/sebastian/Projects/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/lzw.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lzw\+\_\+slownik.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lzw\+\_\+tablica.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{lzw_8h_a76a80298508a4510ca778e621616a4cf}{wczytaj\+\_\+kompresje\+\_\+\+LZW}} (char $\ast$nazwa\+\_\+pliku\+\_\+wejsciowego, char $\ast$nazwa\+\_\+pliku\+\_\+wyjsciowego)
+\begin{DoxyCompactList}\small\item\em Na poczatku otwieramy plik. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lzw_8h_a83110e66f97d7ac1527637a005480e95}{kompresuj\+\_\+\+LZW}} (FILE $\ast$wejscie\+\_\+plik, FILE $\ast$wyjscie\+\_\+plik)
+\begin{DoxyCompactList}\small\item\em Prefiks jest rowny wejsciu pliku. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lzw_8h_a22b03532faebffcce883d7642ce34c92}{wczytaj\+\_\+dekompresje\+\_\+\+LZW}} (char $\ast$nazwa\+\_\+pliku\+\_\+wejsciowego, char $\ast$nazwa\+\_\+pliku\+\_\+wyjsciowego)
+\begin{DoxyCompactList}\small\item\em Na poczatku definujemy strumien pliku wejsciowego. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lzw_8h_af9ddd7c276e9e7039fec764195ba0d82}{dekompresuj\+\_\+\+LZW}} (FILE $\ast$wejscie\+\_\+plik, FILE $\ast$wyjscie\+\_\+plik)
+\begin{DoxyCompactList}\small\item\em Deklarujemy wczesniejszy kod i aktualny kod, nastepny kod oraz pierwszy char. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lzw_8h_a8edfef951779cad0a66b1dbab2080f68}{dekoduj\+\_\+\+LZW}} (int kod, FILE $\ast$wyjscie\+\_\+plik)
+\begin{DoxyCompactList}\small\item\em Deklarujemy znak i tymczasowa. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lzw_8h_a9895efa9eec87c493b2369c6d8af3012}{dekoduj}} (int kod, FILE $\ast$wyjscie\+\_\+plik)
+\item 
+void \mbox{\hyperlink{lzw_8h_a8a687cb95207715661aae125c300592a}{pisz\+\_\+binarnie}} (FILE $\ast$\mbox{\hyperlink{main_8c_a6d8fe156ede2cb6e105696fea61a911b}{wyjscie}}, int kod)
+\item 
+int \mbox{\hyperlink{lzw_8h_a76a8056f0155c24d0e1fa1ff028db133}{czytaj\+\_\+binarnie}} (FILE $\ast$wejscie)
+\begin{DoxyCompactList}\small\item\em Na poczatku kod zrownujemy z funkcja fgets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{lzw_8h_a76a8056f0155c24d0e1fa1ff028db133}\label{lzw_8h_a76a8056f0155c24d0e1fa1ff028db133}} 
+\index{lzw.h@{lzw.h}!czytaj\_binarnie@{czytaj\_binarnie}}
+\index{czytaj\_binarnie@{czytaj\_binarnie}!lzw.h@{lzw.h}}
+\doxysubsubsection{\texorpdfstring{czytaj\_binarnie()}{czytaj\_binarnie()}}
+{\footnotesize\ttfamily int czytaj\+\_\+binarnie (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{wejscie }\end{DoxyParamCaption})}
+
+
+
+Na poczatku kod zrownujemy z funkcja fgets. 
+
+
+\begin{DoxyItemize}
+\item Jesli kod jest rowny wartosci EOF to wtedy zwracamy 0
+\item Jesli resztki sa wieksze od 0 to wtedy kod jest rowny resztkami bitow \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} od 8 + kod i zrownujemy resztki z 0
+\item W przeciwnym wypadku nastepny kod jest rowny fgetc na wejsciu, resztki bitow zrownujemy z nastepnym kodem oraz resztki sa rowne 1, kod jest rowny kodowi \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 4 + nastepny kod + 4
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em wejscie} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+zwracam liczbowe wartosci z czytania binarnego 
+\end{DoxyReturn}
+\mbox{\Hypertarget{lzw_8h_a9895efa9eec87c493b2369c6d8af3012}\label{lzw_8h_a9895efa9eec87c493b2369c6d8af3012}} 
+\index{lzw.h@{lzw.h}!dekoduj@{dekoduj}}
+\index{dekoduj@{dekoduj}!lzw.h@{lzw.h}}
+\doxysubsubsection{\texorpdfstring{dekoduj()}{dekoduj()}}
+{\footnotesize\ttfamily int dekoduj (\begin{DoxyParamCaption}\item[{int}]{kod,  }\item[{FILE $\ast$}]{wyjscie\+\_\+plik }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{lzw_8h_a8edfef951779cad0a66b1dbab2080f68}\label{lzw_8h_a8edfef951779cad0a66b1dbab2080f68}} 
+\index{lzw.h@{lzw.h}!dekoduj\_LZW@{dekoduj\_LZW}}
+\index{dekoduj\_LZW@{dekoduj\_LZW}!lzw.h@{lzw.h}}
+\doxysubsubsection{\texorpdfstring{dekoduj\_LZW()}{dekoduj\_LZW()}}
+{\footnotesize\ttfamily int dekoduj\+\_\+\+LZW (\begin{DoxyParamCaption}\item[{int}]{kod,  }\item[{FILE $\ast$}]{wyjscie\+\_\+plik }\end{DoxyParamCaption})}
+
+
+
+Deklarujemy znak i tymczasowa. 
+
+
+\begin{DoxyItemize}
+\item Jesli kod jest wiekszt od 255 to wtedy znak jest rowny funkcji tablica znak, tymczasowa jest rowna funkcji dekoduj\+\_\+\+LZW
+\item W przeciwnym wypadku zrownujemy znak z kodem, zrownujemy tymczasowa z kodem Na koncu uzywam funkcji fputc i zwracam tymczasowa 
+\begin{DoxyParams}{Parameters}
+{\em kod} & \\
+\hline
+{\em wyjscie\+\_\+plik} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+zwraca liczbowa warosc dekodowania lzw 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\mbox{\Hypertarget{lzw_8h_af9ddd7c276e9e7039fec764195ba0d82}\label{lzw_8h_af9ddd7c276e9e7039fec764195ba0d82}} 
+\index{lzw.h@{lzw.h}!dekompresuj\_LZW@{dekompresuj\_LZW}}
+\index{dekompresuj\_LZW@{dekompresuj\_LZW}!lzw.h@{lzw.h}}
+\doxysubsubsection{\texorpdfstring{dekompresuj\_LZW()}{dekompresuj\_LZW()}}
+{\footnotesize\ttfamily void dekompresuj\+\_\+\+LZW (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{wejscie\+\_\+plik,  }\item[{FILE $\ast$}]{wyjscie\+\_\+plik }\end{DoxyParamCaption})}
+
+
+
+Deklarujemy wczesniejszy kod i aktualny kod, nastepny kod oraz pierwszy char. 
+
+
+\begin{DoxyItemize}
+\item Wczesniejszy kod jest rowny jest rowny funkcji czytaj binarnie
+\item Jesli wczesniejszy kod jest rowny 0 to zwracamy return, potem uzywamy funkcji fputc
+\item Dopoki aktualny kod jest rowny funkcji czytaj binarnie dla wejscia jest wiekszy od 0, w tej petli while sprawdzamy w warunku if czy aktualny kod jest wiekszy badz rowny nastepnemu kodowi i w if uzywamy funkcji putc, w przeciwnym wypadku pierwszy char jest rowny funkcji dekoduj LZW()
+\item W nastepnym warunku jesli nastepny kod jest mniejszy od wielkosci slownika to uzywamy funkcji dodania do tablicy, a na koncu zrownujemy aktualny kod z wczesniejszym kodem
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em wejscie\+\_\+plik} & \\
+\hline
+{\em wyjscie\+\_\+plik} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lzw_8h_a83110e66f97d7ac1527637a005480e95}\label{lzw_8h_a83110e66f97d7ac1527637a005480e95}} 
+\index{lzw.h@{lzw.h}!kompresuj\_LZW@{kompresuj\_LZW}}
+\index{kompresuj\_LZW@{kompresuj\_LZW}!lzw.h@{lzw.h}}
+\doxysubsubsection{\texorpdfstring{kompresuj\_LZW()}{kompresuj\_LZW()}}
+{\footnotesize\ttfamily void kompresuj\+\_\+\+LZW (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{wejscie\+\_\+plik,  }\item[{FILE $\ast$}]{wyjscie\+\_\+plik }\end{DoxyParamCaption})}
+
+
+
+Prefiks jest rowny wejsciu pliku. 
+
+
+\begin{DoxyItemize}
+\item Jezeli prefiks jest rowny EOF to wtedy zwracamy return Nastepnie musimy zadeklarowac znak, nastepny\+\_\+kod, indeks, nastepny kod rowny 256, Pozniej uzywamy funkcji slownik\+\_\+inicjalizacja
+\item Dopoki znak jest rowny getc(wejscie pliku)
+\item Jesli indeks jest rowny funkcji slownik szukaj(prefiks, znak) to wtedy prefiks zrownujemy z indeksem, w przeciwnym wypadku zwroc funkcje pisania binarnego Nastepnie dalej uzywamy else i jesli nastepny kod jest mniejszy od wielkosci slownika, potem uzywamy funkcji dodawania do slownika i potem zrownujemy prefiks ze znakiem, nastepnie uzywamy funkcji pisania binarnego
+\end{DoxyItemize}
+
+Jesli resztki sa wieksze od zera to wtedy uzywamy funkcji fputs i funkcji niszczacej slownikś
+
+
+\begin{DoxyParams}{Parameters}
+{\em wejscie\+\_\+plik} & \\
+\hline
+{\em wyjscie\+\_\+plik} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lzw_8h_a8a687cb95207715661aae125c300592a}\label{lzw_8h_a8a687cb95207715661aae125c300592a}} 
+\index{lzw.h@{lzw.h}!pisz\_binarnie@{pisz\_binarnie}}
+\index{pisz\_binarnie@{pisz\_binarnie}!lzw.h@{lzw.h}}
+\doxysubsubsection{\texorpdfstring{pisz\_binarnie()}{pisz\_binarnie()}}
+{\footnotesize\ttfamily void pisz\+\_\+binarnie (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{wyjscie,  }\item[{int}]{kod }\end{DoxyParamCaption})}
+
+
+\begin{DoxyItemize}
+\item Jesli resztki sa wieksze od 0 to wtedy w warunku wczesniejszy kod zrownujemy z resztkami bitow mniejszych od 4 dodac kod wiekszy od 8, uzywamy tez funkcji fputc oraz zrownujemy resztki z 0
+\item W przeciwnym wypadku zrownujemy resztki bitow z kodem oraz resztki sa rowne 1 oraz fputc.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em wyjscie} & \\
+\hline
+{\em kod} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lzw_8h_a22b03532faebffcce883d7642ce34c92}\label{lzw_8h_a22b03532faebffcce883d7642ce34c92}} 
+\index{lzw.h@{lzw.h}!wczytaj\_dekompresje\_LZW@{wczytaj\_dekompresje\_LZW}}
+\index{wczytaj\_dekompresje\_LZW@{wczytaj\_dekompresje\_LZW}!lzw.h@{lzw.h}}
+\doxysubsubsection{\texorpdfstring{wczytaj\_dekompresje\_LZW()}{wczytaj\_dekompresje\_LZW()}}
+{\footnotesize\ttfamily void wczytaj\+\_\+dekompresje\+\_\+\+LZW (\begin{DoxyParamCaption}\item[{char $\ast$}]{nazwa\+\_\+pliku\+\_\+wejsciowego,  }\item[{char $\ast$}]{nazwa\+\_\+pliku\+\_\+wyjsciowego }\end{DoxyParamCaption})}
+
+
+
+Na poczatku definujemy strumien pliku wejsciowego. 
+
+
+\begin{DoxyItemize}
+\item Jesli plik wejsciowy jest pusta wartoscia to wtedy wychodzimy z programu Definiujemy strumien pliku wyjsciowego.
+\item Jesli plik wyjsciowy jest pusta wartoscia to wychodzimy z programu Korzystamy z funkcji dekompresuj\+\_\+\+LZW oraz fclose dla dla pliku wejsciowego i wyjsciowego
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em nazwa\+\_\+pliku\+\_\+wejsciowego} & \\
+\hline
+{\em nazwa\+\_\+pliku\+\_\+wyjsciowegos} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lzw_8h_a76a80298508a4510ca778e621616a4cf}\label{lzw_8h_a76a80298508a4510ca778e621616a4cf}} 
+\index{lzw.h@{lzw.h}!wczytaj\_kompresje\_LZW@{wczytaj\_kompresje\_LZW}}
+\index{wczytaj\_kompresje\_LZW@{wczytaj\_kompresje\_LZW}!lzw.h@{lzw.h}}
+\doxysubsubsection{\texorpdfstring{wczytaj\_kompresje\_LZW()}{wczytaj\_kompresje\_LZW()}}
+{\footnotesize\ttfamily void wczytaj\+\_\+kompresje\+\_\+\+LZW (\begin{DoxyParamCaption}\item[{char $\ast$}]{nazwa\+\_\+pliku\+\_\+wejsciowego,  }\item[{char $\ast$}]{nazwa\+\_\+pliku\+\_\+wyjsciowego }\end{DoxyParamCaption})}
+
+
+
+Na poczatku otwieramy plik. 
+
+
+\begin{DoxyItemize}
+\item Jesli plik wejsciowy jest pusta wartoscia to wychodzimy z programu Potem definiujemy strumien wyjsciowy.
+\item Jesli plik wyjsciowy jest pusta wartoscia to wychodzimy z programu Korzystamy kompresuj LZW dla nazwy pliku wyjsciowego i wejsciowego.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em nazwa\+\_\+pliku\+\_\+wejsciowego} & \\
+\hline
+{\em nazwa\+\_\+pliku\+\_\+wyjsciowego} & \\
+\hline
+\end{DoxyParams}

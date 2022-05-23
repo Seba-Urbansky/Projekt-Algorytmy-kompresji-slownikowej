@@ -1,0 +1,279 @@
+\hypertarget{lz78_8c}{}\doxysection{/\+Users/sebastian/\+Projects/\+Ai\+SD.PRO.1ID15\+B.\+SIWEK.\+URBAŃ\+SKI.\+KM.2/\+Ai\+SD.PRO.1ID15\+B.\+SIWEK.\+URBAŃ\+SKI.\+KM.2/lz78.c File Reference}
+\label{lz78_8c}\index{/Users/sebastian/Projects/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/lz78.c@{/Users/sebastian/Projects/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/lz78.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$limits.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lz78.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{lz78_8c_aa6c5ff7aeb69008a3ecee5945bffeb59}{dodaj\+\_\+potomka}} (\mbox{\hyperlink{lz78_8h_a219bc05e6851086285f6b4c7009ee650}{Lista}} $\ast$$\ast$dziecko, \mbox{\hyperlink{lz78_8h_af94b82ab3880d9abb2b7243ee9e9ac8f}{indeks}} idx, char znak)
+\begin{DoxyCompactList}\small\item\em Jesli wskaznik na dziecko jest pusty alkokujemy pamiec na dziecko. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{lz78_8h_a219bc05e6851086285f6b4c7009ee650}{Lista}} $\ast$ \mbox{\hyperlink{lz78_8c_af363f3f6a27cfcb6c2050d9b3f00adfd}{wyszukaj\+\_\+potomka}} (\mbox{\hyperlink{lz78_8h_a219bc05e6851086285f6b4c7009ee650}{Lista}} $\ast$dziecko, char znak)
+\begin{DoxyCompactList}\small\item\em Funkcja ta jest odpowiedzialna za wyszukiwanie potomka. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{lz78_8h_ac7f50152b4d7d51e99291f146c583bc4}{Wezel}} $\ast$ \mbox{\hyperlink{lz78_8c_a926cc1fd5fd96682a26eda59b600dbfd}{wyszukaj}} (\mbox{\hyperlink{lz78_8h_ac7f50152b4d7d51e99291f146c583bc4}{Wezel}} $\ast$rodzic, char $\ast$znak, long long int $\ast$pozycja, long long int dlugosc\+\_\+napisu)
+\begin{DoxyCompactList}\small\item\em Funkcja w petli while jesli rodzic nie jest pusty, to wyszukuje potomka. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lz78_8c_a024f7459405dd43d84719543e90a3647}{kompresuj}} (char $\ast$znak, long long int dlugosc\+\_\+napisu, char $\ast$nazwa\+\_\+pliku\+\_\+wyjsciowego)
+\begin{DoxyCompactList}\small\item\em Na poczatku funkcji deklarujemy strumien wyjsciowy pliku oraz wezel slownika. \end{DoxyCompactList}\item 
+long long int \mbox{\hyperlink{lz78_8c_ab6633386a4442eba1afa421a5adcb537}{dlugosc\+\_\+slowa}} (\mbox{\hyperlink{lz78_8h_af94b82ab3880d9abb2b7243ee9e9ac8f}{indeks}} $\ast$idx, long long int pozycja)
+\begin{DoxyCompactList}\small\item\em Na poczatku funkcji deklaujemy licznik, ktory na poczatku jest rowny 1 oraz zrownujemy indeks poprzedni\+\_\+indeks z idx od pozycji. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{lz78_8c_a7d511bcf241015f2ca6e5f90608882a3}{czytaj\+\_\+slowo}} (\mbox{\hyperlink{lz78_8h_af94b82ab3880d9abb2b7243ee9e9ac8f}{indeks}} $\ast$idx, char $\ast$znak, long long int pozycja, long long int \mbox{\hyperlink{lz78_8h_ab6633386a4442eba1afa421a5adcb537}{dlugosc\+\_\+slowa}}, char $\ast$slowo)
+\begin{DoxyCompactList}\small\item\em Na poczatku indeks indeks\+\_\+poprzedni jest rowny id(pozycje), zmienna pos jest rowna dlugosci slowa -\/1, slowo(pos) jest rowne znakowi(pozycji) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lz78_8c_ab8c30aadbaa2bd29297f01e76dbe25bc}{dekompresuj}} (\mbox{\hyperlink{lz78_8h_af94b82ab3880d9abb2b7243ee9e9ac8f}{indeks}} $\ast$idx, char $\ast$znak, long long int rozmiar\+\_\+tablic, char $\ast$nazwa\+\_\+pliku\+\_\+wyjsciowego)
+\begin{DoxyCompactList}\small\item\em Najpierw definiujemy strumien wyjsciowy, deklarujemy pozycje jako 0. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lz78_8c_a2e8534b61160c6d88d8a18f5b393bed8}{wczytaj\+\_\+kompresje}} (char $\ast$nazwa\+\_\+pliku\+\_\+wejsciowego, char $\ast$nazwa\+\_\+pliku\+\_\+wyjsciowego)
+\begin{DoxyCompactList}\small\item\em Zaczynamy od otwarcia pliku wejsciowego. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lz78_8c_ab346a026796c0fd261cc3bd093f648f1}{wczytaj\+\_\+dekompresje}} (char $\ast$nazwa\+\_\+pliku\+\_\+wejsciowego, char $\ast$nazwa\+\_\+pliku\+\_\+wyjsciowego)
+\begin{DoxyCompactList}\small\item\em Ta funkcja odpowiedzialna jest za działanie zwiazanie z wczytaniem dekompresji. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lz78_8c_a8546595fddd624e6866f2001d8babe6f}{usun\+\_\+slownik}} (\mbox{\hyperlink{lz78_8h_ac7f50152b4d7d51e99291f146c583bc4}{Wezel}} $\ast$drzewo)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{lz78_8c_a7d511bcf241015f2ca6e5f90608882a3}\label{lz78_8c_a7d511bcf241015f2ca6e5f90608882a3}} 
+\index{lz78.c@{lz78.c}!czytaj\_slowo@{czytaj\_slowo}}
+\index{czytaj\_slowo@{czytaj\_slowo}!lz78.c@{lz78.c}}
+\doxysubsubsection{\texorpdfstring{czytaj\_slowo()}{czytaj\_slowo()}}
+{\footnotesize\ttfamily char $\ast$ czytaj\+\_\+slowo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{lz78_8h_af94b82ab3880d9abb2b7243ee9e9ac8f}{indeks}} $\ast$}]{idx,  }\item[{char $\ast$}]{znak,  }\item[{long long int}]{pozycja,  }\item[{long long int}]{dlugosc\+\_\+slowa,  }\item[{char $\ast$}]{slowo }\end{DoxyParamCaption})}
+
+
+
+Na poczatku indeks indeks\+\_\+poprzedni jest rowny id(pozycje), zmienna pos jest rowna dlugosci slowa -\/1, slowo(pos) jest rowne znakowi(pozycji) 
+
+
+\begin{DoxyItemize}
+\item Dopoki indeks\+\_\+poprzedni nie jest rowny 0, to zmniejszamy pos oraz slowo(pos) jest rowne znakowi(indeks\+\_\+poprzedni -\/ 1), indeks\+\_\+poprzedni jest rowny idx(indeks\+\_\+poprzedni -\/ 1)
+\item A na koncu zwracamy slowo
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & \\
+\hline
+{\em znak} & \\
+\hline
+{\em pozycja} & \\
+\hline
+{\em dlugosc\+\_\+slowa} & \\
+\hline
+{\em slowo} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lz78_8c_ab8c30aadbaa2bd29297f01e76dbe25bc}\label{lz78_8c_ab8c30aadbaa2bd29297f01e76dbe25bc}} 
+\index{lz78.c@{lz78.c}!dekompresuj@{dekompresuj}}
+\index{dekompresuj@{dekompresuj}!lz78.c@{lz78.c}}
+\doxysubsubsection{\texorpdfstring{dekompresuj()}{dekompresuj()}}
+{\footnotesize\ttfamily void dekompresuj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{lz78_8h_af94b82ab3880d9abb2b7243ee9e9ac8f}{indeks}} $\ast$}]{idx,  }\item[{char $\ast$}]{znak,  }\item[{long long int}]{rozmiar\+\_\+tablic,  }\item[{char $\ast$}]{nazwa\+\_\+pliku\+\_\+wyjsciowego }\end{DoxyParamCaption})}
+
+
+
+Najpierw definiujemy strumien wyjsciowy, deklarujemy pozycje jako 0. 
+
+
+\begin{DoxyItemize}
+\item Dopoki pozycja jest mniejsza od rozmiaru\+\_\+tablic, to wtedy rozmiar slowa jest rowny dlugosci\+\_\+slowa(idx, pozycji), wskaznik na slowo jest rowny alokacji pamieci na wskaznik rozmiaru slowa, a slowo jest rowne funkcji czytaj\+\_\+slowo z odpowiednimi parametrami, potem korzystam z fwrite i free dla odpowiednich paramatrow, zwiekszam pozycje oraz zamykam plik.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & \\
+\hline
+{\em znak} & \\
+\hline
+{\em rozmiar\+\_\+tablic} & \\
+\hline
+{\em nazwa\+\_\+pliku\+\_\+wyjsciowego} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lz78_8c_ab6633386a4442eba1afa421a5adcb537}\label{lz78_8c_ab6633386a4442eba1afa421a5adcb537}} 
+\index{lz78.c@{lz78.c}!dlugosc\_slowa@{dlugosc\_slowa}}
+\index{dlugosc\_slowa@{dlugosc\_slowa}!lz78.c@{lz78.c}}
+\doxysubsubsection{\texorpdfstring{dlugosc\_slowa()}{dlugosc\_slowa()}}
+{\footnotesize\ttfamily long long int dlugosc\+\_\+slowa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{lz78_8h_af94b82ab3880d9abb2b7243ee9e9ac8f}{indeks}} $\ast$}]{idx,  }\item[{long long int}]{pozycja }\end{DoxyParamCaption})}
+
+
+
+Na poczatku funkcji deklaujemy licznik, ktory na poczatku jest rowny 1 oraz zrownujemy indeks poprzedni\+\_\+indeks z idx od pozycji. 
+
+
+\begin{DoxyItemize}
+\item Dopoki poprzedni indeks nie jest rowny 0 to wtedy poprzedni indeks jest rowny idx(a w nim poprzedniemu\+\_\+indeksowi -\/ 1), dodajemy do licznika oraz zwracamy ten licznik
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & \\
+\hline
+{\em pozycja} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lz78_8c_aa6c5ff7aeb69008a3ecee5945bffeb59}\label{lz78_8c_aa6c5ff7aeb69008a3ecee5945bffeb59}} 
+\index{lz78.c@{lz78.c}!dodaj\_potomka@{dodaj\_potomka}}
+\index{dodaj\_potomka@{dodaj\_potomka}!lz78.c@{lz78.c}}
+\doxysubsubsection{\texorpdfstring{dodaj\_potomka()}{dodaj\_potomka()}}
+{\footnotesize\ttfamily void dodaj\+\_\+potomka (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{lz78_8h_a219bc05e6851086285f6b4c7009ee650}{Lista}} $\ast$$\ast$}]{dziecko,  }\item[{\mbox{\hyperlink{lz78_8h_af94b82ab3880d9abb2b7243ee9e9ac8f}{indeks}}}]{idx,  }\item[{char}]{znak }\end{DoxyParamCaption})}
+
+
+
+Jesli wskaznik na dziecko jest pusty alkokujemy pamiec na dziecko. 
+
+
+\begin{DoxyItemize}
+\item Nastepnie jesli wskaznik na dziecko jest pusty to wtedy wychodzimy z program
+\item W przeciwnym wypadku idx jest rowne wskaznikowi dziecka na wezel idx, znak jest rowny wskaznikowi dziecka na wezel znaku, natomiast wskaznik dziecka na wezel dziecka sa puste, wskaznik dziecka na nastepny tez jest pusty
+\item W nastepnym przeciwnym wypadku wskaznik na aktualny jest rowny wskaznikowi na dziecko
+\item Korzystam z warunku while i w nim jesli wskaznik akutualnego na nastepny nie jest pusty i aktualny jest rowny wskaznikowi aktualnego na nastepny
+\item Jesli wskaznik aktualnego na nastepny jest pusty to wtedy wychodzimy z programu
+\item Nastepnie w przeciwnym wypadku idx jest rowne wskaznikowi aktualnego na nastepny element oraz na wezel idx, znak jest rowny wskaznikowi aktualnego na nastepny element oraz na wezel znaku, natomiast wskaznik aktualnego na nastepny i na wezel dziecka sa puste, wskaznik aktualnego na nastepny sa puste
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em dziecko} & \\
+\hline
+{\em idx} & \\
+\hline
+{\em znak} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lz78_8c_a024f7459405dd43d84719543e90a3647}\label{lz78_8c_a024f7459405dd43d84719543e90a3647}} 
+\index{lz78.c@{lz78.c}!kompresuj@{kompresuj}}
+\index{kompresuj@{kompresuj}!lz78.c@{lz78.c}}
+\doxysubsubsection{\texorpdfstring{kompresuj()}{kompresuj()}}
+{\footnotesize\ttfamily void kompresuj (\begin{DoxyParamCaption}\item[{char $\ast$}]{znak,  }\item[{long long int}]{dlugosc\+\_\+napisu,  }\item[{char $\ast$}]{nazwa\+\_\+pliku\+\_\+wyjsciowego }\end{DoxyParamCaption})}
+
+
+
+Na poczatku funkcji deklarujemy strumien wyjsciowy pliku oraz wezel slownika. 
+
+
+\begin{DoxyItemize}
+\item Jesli slownik jest pusty to wtedy wychodzimy z programu
+\item W przeciwnym wypadku wskazujemy slownikiem na idx i to jest rowne 0, wskazujemy slownikiem na dziecko i to jest pusta wartoscia, pozycje deklarujemy jako 0, oraz nowy indeks jako 1
+\item W petli while dopoki pozycja jest mniejsza od dlugosci napisu, definujemy wskaznik na rodzica -\/Jesli pozycja jest mniejsza od dlugosci napisu oraz jesli nowy indeks jest mniejszy od UCHAR\+\_\+\+MAX to wtedy w fwrite ustalamy strumienie wyjsciowe i korzystamy z funkcji dodaj potomka, zwiekszamy pozycje oraz nowy\+\_\+indeks, w przeciwnym wypadku korzystamy z funkcji usun\+\_\+slownik i wychodzimy z programu
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em znak} & \\
+\hline
+{\em nazwa\+\_\+pliku\+\_\+wyjsciowego} & \\
+\hline
+{\em dlugosc\+\_\+napisu} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lz78_8c_a8546595fddd624e6866f2001d8babe6f}\label{lz78_8c_a8546595fddd624e6866f2001d8babe6f}} 
+\index{lz78.c@{lz78.c}!usun\_slownik@{usun\_slownik}}
+\index{usun\_slownik@{usun\_slownik}!lz78.c@{lz78.c}}
+\doxysubsubsection{\texorpdfstring{usun\_slownik()}{usun\_slownik()}}
+{\footnotesize\ttfamily void usun\+\_\+slownik (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{lz78_8h_ac7f50152b4d7d51e99291f146c583bc4}{Wezel}} $\ast$}]{drzewo }\end{DoxyParamCaption})}
+
+
+\begin{DoxyItemize}
+\item Jesli drzewo nie jest pusta wartoscia to wtedy poprzednie dziecko w liscie jest pusta wartoscia
+\item Dopoki wskaznik drzewa na dziecko to uzywamy funkcji usun\+\_\+slownik, a poprzednie dziecko jest rowne wskaznikowi drzewa na dziecko, wskaznik drzewa na dziecko jest rowne wskaznikowi na drzewa na dziecko i na nastepny i uwalniamy pamiec od poprzedniego dziecka.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em drzewo} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lz78_8c_ab346a026796c0fd261cc3bd093f648f1}\label{lz78_8c_ab346a026796c0fd261cc3bd093f648f1}} 
+\index{lz78.c@{lz78.c}!wczytaj\_dekompresje@{wczytaj\_dekompresje}}
+\index{wczytaj\_dekompresje@{wczytaj\_dekompresje}!lz78.c@{lz78.c}}
+\doxysubsubsection{\texorpdfstring{wczytaj\_dekompresje()}{wczytaj\_dekompresje()}}
+{\footnotesize\ttfamily void wczytaj\+\_\+dekompresje (\begin{DoxyParamCaption}\item[{char $\ast$}]{nazwa\+\_\+pliku\+\_\+wejsciowego,  }\item[{char $\ast$}]{nazwa\+\_\+pliku\+\_\+wyjsciowego }\end{DoxyParamCaption})}
+
+
+
+Ta funkcja odpowiedzialna jest za działanie zwiazanie z wczytaniem dekompresji. 
+
+
+\begin{DoxyItemize}
+\item Jesli plik jest pusty to wtedy wychodzimy z programu.
+\item W przeciwnym wypadku uzywamy funkcji fseek dla pliku, rozmiar\+\_\+pliku jest rowny funkcji ftell(plik), alokujemy pamiec ze wskaznika idx i znak na $\ast$rozmiar tablicy
+\item Jesli idx jest pusty oraz znak jest pusty to wtedy wychodzimy z programu, w przeciwnym wypadku i=0, uzywamy funkcji czytajacej dla idx i znaku i uzywamy funkcji dekompresuj, free i fclose. 
+\begin{DoxyParams}{Parameters}
+{\em nazwa\+\_\+pliku\+\_\+wejsciowego} & \\
+\hline
+{\em nazwa\+\_\+pliku\+\_\+wyjsciowego} & \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\mbox{\Hypertarget{lz78_8c_a2e8534b61160c6d88d8a18f5b393bed8}\label{lz78_8c_a2e8534b61160c6d88d8a18f5b393bed8}} 
+\index{lz78.c@{lz78.c}!wczytaj\_kompresje@{wczytaj\_kompresje}}
+\index{wczytaj\_kompresje@{wczytaj\_kompresje}!lz78.c@{lz78.c}}
+\doxysubsubsection{\texorpdfstring{wczytaj\_kompresje()}{wczytaj\_kompresje()}}
+{\footnotesize\ttfamily void wczytaj\+\_\+kompresje (\begin{DoxyParamCaption}\item[{char $\ast$}]{nazwa\+\_\+pliku\+\_\+wejsciowego,  }\item[{char $\ast$}]{nazwa\+\_\+pliku\+\_\+wyjsciowego }\end{DoxyParamCaption})}
+
+
+
+Zaczynamy od otwarcia pliku wejsciowego. 
+
+
+\begin{DoxyItemize}
+\item Jesli plik jest pusty to wtedy wychodzimy z programu.
+\item W przeciwnym wypadku korzystamy z funkcji fseek dla pliku
+\item Jesli napis jest pusta wartoscia to wychodzimy z programu, w przeciwnym wypadki i=0
+\item Dopoki jest wartosc 1 uzywamy funkcji fread
+\item Jesli funkcja foef(plik) to zatrzymujemy program i zwiekszamy i, a na koncu uzywam funkcji kompresuj, free, fclose
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em nazwa\+\_\+pliku\+\_\+wejsciowego} & \\
+\hline
+{\em nazwa\+\_\+pliku\+\_\+wyjsciowego} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lz78_8c_a926cc1fd5fd96682a26eda59b600dbfd}\label{lz78_8c_a926cc1fd5fd96682a26eda59b600dbfd}} 
+\index{lz78.c@{lz78.c}!wyszukaj@{wyszukaj}}
+\index{wyszukaj@{wyszukaj}!lz78.c@{lz78.c}}
+\doxysubsubsection{\texorpdfstring{wyszukaj()}{wyszukaj()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{lz78_8h_ac7f50152b4d7d51e99291f146c583bc4}{Wezel}} $\ast$ wyszukaj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{lz78_8h_ac7f50152b4d7d51e99291f146c583bc4}{Wezel}} $\ast$}]{rodzic,  }\item[{char $\ast$}]{znak,  }\item[{long long int $\ast$}]{pozycja,  }\item[{long long int}]{dlugosc\+\_\+napisu }\end{DoxyParamCaption})}
+
+
+
+Funkcja w petli while jesli rodzic nie jest pusty, to wyszukuje potomka. 
+
+
+\begin{DoxyItemize}
+\item Jesli wskaznik na pozycje jest mniejszy od dlugosci napisu -\/ 1 oraz dziecko nie jest puste to wtedy dodajemy do pozycji, a rodzic jest rowny wskaznikowi dziecka na wezel, charakter jest rowny znakowi($\ast$pozycja)
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em rodzic} & \\
+\hline
+{\em znak} & \\
+\hline
+{\em pozycja} & \\
+\hline
+{\em dlugosc\+\_\+napisu} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lz78_8c_af363f3f6a27cfcb6c2050d9b3f00adfd}\label{lz78_8c_af363f3f6a27cfcb6c2050d9b3f00adfd}} 
+\index{lz78.c@{lz78.c}!wyszukaj\_potomka@{wyszukaj\_potomka}}
+\index{wyszukaj\_potomka@{wyszukaj\_potomka}!lz78.c@{lz78.c}}
+\doxysubsubsection{\texorpdfstring{wyszukaj\_potomka()}{wyszukaj\_potomka()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{lz78_8h_a219bc05e6851086285f6b4c7009ee650}{Lista}} $\ast$ wyszukaj\+\_\+potomka (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{lz78_8h_a219bc05e6851086285f6b4c7009ee650}{Lista}} $\ast$}]{dziecko,  }\item[{char}]{znak }\end{DoxyParamCaption})}
+
+
+
+Funkcja ta jest odpowiedzialna za wyszukiwanie potomka. 
+
+
+\begin{DoxyItemize}
+\item Jesli dziecko nie jest pusta wartoscia to we while jesli dziecko nie jest pusta watoscia oraz jesli znak jest rowny wskaznikowi dziecka na wezel znaku to wtedy dziecko jest rowne wskaznikowi dziecka na nastepny element
+\item Jesli dziecko nie jest pusta wartoscia oraz znak jest rowny wskaznikowi dziecka na wezel znak to wtedy zwroc dziecko
+\item a na koncu zwroc pusta wartosc
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em dziecko} & \\
+\hline
+{\em znak} & \\
+\hline
+\end{DoxyParams}

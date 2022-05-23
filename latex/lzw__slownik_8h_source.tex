@@ -1,0 +1,25 @@
+\hypertarget{lzw__slownik_8h_source}{}\doxysection{lzw\+\_\+slownik.\+h}
+\label{lzw__slownik_8h_source}\index{/Users/sebastian/Projects/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/lzw\_slownik.h@{/Users/sebastian/Projects/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/lzw\_slownik.h}}
+\mbox{\hyperlink{lzw__slownik_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define slownik\_wielkosc 4096}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{13 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_slownik_wezel_struktura}{SlownikWezelStruktura}} \{}
+\DoxyCodeLine{14     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_slownik_wezel_struktura_a1d03582e96416f9acc94aafef49b2572}{wartosclzw}}; }
+\DoxyCodeLine{15     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_slownik_wezel_struktura_a5e4f7318ffd6825394e462d2d8d246cc}{prefiks}}; }
+\DoxyCodeLine{16     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_slownik_wezel_struktura_a907ca4ca4f37288ef9e4551ff97b1c29}{znak}}; }
+\DoxyCodeLine{17     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_slownik_wezel_struktura}{SlownikWezelStruktura}} *\mbox{\hyperlink{struct_slownik_wezel_struktura_a597769290bb316c3e597296380e780a1}{nastepny}};}
+\DoxyCodeLine{18 \} \mbox{\hyperlink{lzw__slownik_8h_a6ce97ebf0e55a3d962847993d8117a92}{SlownikWezel}};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{26 \textcolor{keywordtype}{void} \mbox{\hyperlink{lzw__slownik_8h_af3aedca590d81cf7c9ada7e22c17eb93}{slownik\_inicjalizacja}}();}
+\DoxyCodeLine{27 \textcolor{keywordtype}{void} \mbox{\hyperlink{lzw__slownik_8h_a671656871f72bfe5351b9b98df0794f6}{dodaj\_wezel}}(\mbox{\hyperlink{struct_slownik_wezel_struktura}{SlownikWezel}} *wezel);}
+\DoxyCodeLine{28 \textcolor{keywordtype}{void} \mbox{\hyperlink{lzw__slownik_8h_abd65b87dd0bfc102ae2d0d33b2a280ff}{slownik\_zniszcz}}();}
+\DoxyCodeLine{29 \textcolor{keywordtype}{int} \mbox{\hyperlink{lzw__slownik_8h_a7848267f481b004c651615a0f13df1ff}{slownik\_szukaj}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{struct_slownik_wezel_struktura_a5e4f7318ffd6825394e462d2d8d246cc}{prefiks}}, \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_slownik_wezel_struktura_a907ca4ca4f37288ef9e4551ff97b1c29}{znak}});}
+\DoxyCodeLine{30 \textcolor{keywordtype}{int} \mbox{\hyperlink{lzw__slownik_8h_a8b821f9dc55ecffcdf1f7784d80fc3b2}{slownik\_prefiks}}(\textcolor{keywordtype}{int} value);}
+\DoxyCodeLine{31 \textcolor{keywordtype}{int} \mbox{\hyperlink{lzw__slownik_8h_accf5f1bff212c52c95175d61c3e4865e}{slownik\_znak}}(\textcolor{keywordtype}{int} value);}
+\DoxyCodeLine{32 \textcolor{keywordtype}{void} \mbox{\hyperlink{lzw__slownik_8h_a88232b5ccebec6087c9fe85c9307db07}{slownik\_dodaj}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{struct_slownik_wezel_struktura_a5e4f7318ffd6825394e462d2d8d246cc}{prefiks}}, \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_slownik_wezel_struktura_a907ca4ca4f37288ef9e4551ff97b1c29}{znak}}, \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_slownik_wezel_struktura_a1d03582e96416f9acc94aafef49b2572}{wartosclzw}});}
+
+\end{DoxyCode}

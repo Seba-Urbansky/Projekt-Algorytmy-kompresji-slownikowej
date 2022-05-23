@@ -1,0 +1,187 @@
+\hypertarget{lzw__slownik_8c}{}\doxysection{/\+Users/sebastian/\+Projects/\+Ai\+SD.PRO.1ID15\+B.\+SIWEK.\+URBAŃ\+SKI.\+KM.2/\+Ai\+SD.PRO.1ID15\+B.\+SIWEK.\+URBAŃ\+SKI.\+KM.2/lzw\+\_\+slownik.c File Reference}
+\label{lzw__slownik_8c}\index{/Users/sebastian/Projects/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/lzw\_slownik.c@{/Users/sebastian/Projects/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/AiSD.PRO.1ID15B.SIWEK.URBAŃSKI.KM.2/lzw\_slownik.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lzw\+\_\+slownik.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{lzw__slownik_8c_af3aedca590d81cf7c9ada7e22c17eb93}{slownik\+\_\+inicjalizacja}} ()
+\begin{DoxyCompactList}\small\item\em Zadeklarowanie wezela (Slownik\+Wezel), Uzywam petli i wypisuje w petli znaki ASCII. Node wskazuje na prefiks -\/1 oraz na znak ktory jest iteratorem. Na koncu uzywam funkcji dodaj\+\_\+wezel;. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lzw__slownik_8c_a671656871f72bfe5351b9b98df0794f6}{dodaj\+\_\+wezel}} (\mbox{\hyperlink{lzw__slownik_8h_a6ce97ebf0e55a3d962847993d8117a92}{Slownik\+Wezel}} $\ast$wezel)
+\begin{DoxyCompactList}\small\item\em Jesli slownik nie jest pusty. W petli wezel jest rowny wskaznikowi ogona na nastepny element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lzw__slownik_8c_abd65b87dd0bfc102ae2d0d33b2a280ff}{slownik\+\_\+zniszcz}} ()
+\begin{DoxyCompactList}\small\item\em Dopoki slownik nie jest pusty. W petli while slownik jest rowny wskaznikowi slownikowi na nastepny element. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lzw__slownik_8c_a7848267f481b004c651615a0f13df1ff}{slownik\+\_\+szukaj}} (int prefiks, int znak)
+\begin{DoxyCompactList}\small\item\em W petli wezel jest rowny slownikowi, jesli wezel nie jest pusty, wezel jest rowny wskaznikowi wezla na nastepny element. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lzw__slownik_8c_a8b821f9dc55ecffcdf1f7784d80fc3b2}{slownik\+\_\+prefiks}} (int value)
+\begin{DoxyCompactList}\small\item\em Deklarujemy wezel. W petli wezel jest rowny slownikowi, a wezel nie jest pusta wartoscia, a wezel jest rowny wskaznikowi wezla na nastepny element. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lzw__slownik_8c_accf5f1bff212c52c95175d61c3e4865e}{slownik\+\_\+znak}} (int value)
+\begin{DoxyCompactList}\small\item\em Uzywamy wskaznika na wezel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lzw__slownik_8c_a88232b5ccebec6087c9fe85c9307db07}{slownik\+\_\+dodaj}} (int prefiks, int znak, int wartosclzw)
+\begin{DoxyCompactList}\small\item\em Uzywamy wskaznika na wezel. Wezel jest rowny alokacji pamieci na strukture Slownik\+Wezel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{lzw__slownik_8h_a6ce97ebf0e55a3d962847993d8117a92}{Slownik\+Wezel}} $\ast$ \mbox{\hyperlink{lzw__slownik_8c_a4a267300a5718d9098615e5c4a8e0b7e}{slownik}}
+\item 
+\mbox{\hyperlink{lzw__slownik_8h_a6ce97ebf0e55a3d962847993d8117a92}{Slownik\+Wezel}} $\ast$ \mbox{\hyperlink{lzw__slownik_8c_a476be34db9a431b3cec831b6152e7276}{ogon}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{lzw__slownik_8c_a671656871f72bfe5351b9b98df0794f6}\label{lzw__slownik_8c_a671656871f72bfe5351b9b98df0794f6}} 
+\index{lzw\_slownik.c@{lzw\_slownik.c}!dodaj\_wezel@{dodaj\_wezel}}
+\index{dodaj\_wezel@{dodaj\_wezel}!lzw\_slownik.c@{lzw\_slownik.c}}
+\doxysubsubsection{\texorpdfstring{dodaj\_wezel()}{dodaj\_wezel()}}
+{\footnotesize\ttfamily void dodaj\+\_\+wezel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{lzw__slownik_8h_a6ce97ebf0e55a3d962847993d8117a92}{Slownik\+Wezel}} $\ast$}]{wezel }\end{DoxyParamCaption})}
+
+
+
+Jesli slownik nie jest pusty. W petli wezel jest rowny wskaznikowi ogona na nastepny element. 
+
+
+\begin{DoxyItemize}
+\item W przeciwnym wypadku slownik jest rowny wezel. Ogon jest rowny wezlowi.
+\item Pusty element jest rowny wskaznikowi wezla na nastepny element.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em wezel} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lzw__slownik_8c_a88232b5ccebec6087c9fe85c9307db07}\label{lzw__slownik_8c_a88232b5ccebec6087c9fe85c9307db07}} 
+\index{lzw\_slownik.c@{lzw\_slownik.c}!slownik\_dodaj@{slownik\_dodaj}}
+\index{slownik\_dodaj@{slownik\_dodaj}!lzw\_slownik.c@{lzw\_slownik.c}}
+\doxysubsubsection{\texorpdfstring{slownik\_dodaj()}{slownik\_dodaj()}}
+{\footnotesize\ttfamily void slownik\+\_\+dodaj (\begin{DoxyParamCaption}\item[{int}]{prefiks,  }\item[{int}]{znak,  }\item[{int}]{wartosclzw }\end{DoxyParamCaption})}
+
+
+
+Uzywamy wskaznika na wezel. Wezel jest rowny alokacji pamieci na strukture Slownik\+Wezel. 
+
+
+\begin{DoxyItemize}
+\item Wartosclzw jest rowna wskaznikowi wezla na wartosclzw, prefiks jest rowny wskaznikowi wezla na prefiks. Znak jest rowny wskaznikowi wezla na znak.
+\item Na koncu uzywamy funkcje dodaj\+\_\+wezel.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em prefiks} & \\
+\hline
+{\em znak} & \\
+\hline
+{\em wartosclzw} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lzw__slownik_8c_af3aedca590d81cf7c9ada7e22c17eb93}\label{lzw__slownik_8c_af3aedca590d81cf7c9ada7e22c17eb93}} 
+\index{lzw\_slownik.c@{lzw\_slownik.c}!slownik\_inicjalizacja@{slownik\_inicjalizacja}}
+\index{slownik\_inicjalizacja@{slownik\_inicjalizacja}!lzw\_slownik.c@{lzw\_slownik.c}}
+\doxysubsubsection{\texorpdfstring{slownik\_inicjalizacja()}{slownik\_inicjalizacja()}}
+{\footnotesize\ttfamily void slownik\+\_\+inicjalizacja (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Zadeklarowanie wezela (Slownik\+Wezel), Uzywam petli i wypisuje w petli znaki ASCII. Node wskazuje na prefiks -\/1 oraz na znak ktory jest iteratorem. Na koncu uzywam funkcji dodaj\+\_\+wezel;. 
+
+\mbox{\Hypertarget{lzw__slownik_8c_a8b821f9dc55ecffcdf1f7784d80fc3b2}\label{lzw__slownik_8c_a8b821f9dc55ecffcdf1f7784d80fc3b2}} 
+\index{lzw\_slownik.c@{lzw\_slownik.c}!slownik\_prefiks@{slownik\_prefiks}}
+\index{slownik\_prefiks@{slownik\_prefiks}!lzw\_slownik.c@{lzw\_slownik.c}}
+\doxysubsubsection{\texorpdfstring{slownik\_prefiks()}{slownik\_prefiks()}}
+{\footnotesize\ttfamily int slownik\+\_\+prefiks (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Deklarujemy wezel. W petli wezel jest rowny slownikowi, a wezel nie jest pusta wartoscia, a wezel jest rowny wskaznikowi wezla na nastepny element. 
+
+
+\begin{DoxyItemize}
+\item W petli for stosujemy warunek if jesli value jest rowne wezel wskazuje na wartosclzw. Zwracaj wskaznik wezla na prefiks.
+\item Zwracaj wartosc -\/1.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zwraca wartosc liczbowa prefiks 
+\end{DoxyReturn}
+\mbox{\Hypertarget{lzw__slownik_8c_a7848267f481b004c651615a0f13df1ff}\label{lzw__slownik_8c_a7848267f481b004c651615a0f13df1ff}} 
+\index{lzw\_slownik.c@{lzw\_slownik.c}!slownik\_szukaj@{slownik\_szukaj}}
+\index{slownik\_szukaj@{slownik\_szukaj}!lzw\_slownik.c@{lzw\_slownik.c}}
+\doxysubsubsection{\texorpdfstring{slownik\_szukaj()}{slownik\_szukaj()}}
+{\footnotesize\ttfamily int slownik\+\_\+szukaj (\begin{DoxyParamCaption}\item[{int}]{prefiks,  }\item[{int}]{znak }\end{DoxyParamCaption})}
+
+
+
+W petli wezel jest rowny slownikowi, jesli wezel nie jest pusty, wezel jest rowny wskaznikowi wezla na nastepny element. 
+
+
+\begin{DoxyItemize}
+\item W petli wystepuje warunek if prefiks jest rowny wskaznikowi wezla na prefiks oraz znak jest rowny wskaznikowi wezla na znak. W warunku if returnem wskazujemy wezlem na wartosclzw. Na koncu zwracamy wartosc -\/1;
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em prefiks} & \\
+\hline
+{\em znak} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zwraca wartosc liczbowa szukana slownika 
+\end{DoxyReturn}
+\mbox{\Hypertarget{lzw__slownik_8c_accf5f1bff212c52c95175d61c3e4865e}\label{lzw__slownik_8c_accf5f1bff212c52c95175d61c3e4865e}} 
+\index{lzw\_slownik.c@{lzw\_slownik.c}!slownik\_znak@{slownik\_znak}}
+\index{slownik\_znak@{slownik\_znak}!lzw\_slownik.c@{lzw\_slownik.c}}
+\doxysubsubsection{\texorpdfstring{slownik\_znak()}{slownik\_znak()}}
+{\footnotesize\ttfamily int slownik\+\_\+znak (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Uzywamy wskaznika na wezel. 
+
+
+\begin{DoxyItemize}
+\item W petli for wezel jest rowny slownikowi, wezel nie jest pusta wartoscia, wezel jest rowny wskaznikowi wezla na nastepny element.
+\item W petli stosujemy warunek if a w nim jesli value jest rowne wskaznikowi na wartosclzw to zwroc wskaznikowi wezla na znak;
+\item Na koncu zwraaca wartosc -\/1.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zwraca wartosc liczbowa znaku slownika. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{lzw__slownik_8c_abd65b87dd0bfc102ae2d0d33b2a280ff}\label{lzw__slownik_8c_abd65b87dd0bfc102ae2d0d33b2a280ff}} 
+\index{lzw\_slownik.c@{lzw\_slownik.c}!slownik\_zniszcz@{slownik\_zniszcz}}
+\index{slownik\_zniszcz@{slownik\_zniszcz}!lzw\_slownik.c@{lzw\_slownik.c}}
+\doxysubsubsection{\texorpdfstring{slownik\_zniszcz()}{slownik\_zniszcz()}}
+{\footnotesize\ttfamily void slownik\+\_\+zniszcz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Dopoki slownik nie jest pusty. W petli while slownik jest rowny wskaznikowi slownikowi na nastepny element. 
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{lzw__slownik_8c_a476be34db9a431b3cec831b6152e7276}\label{lzw__slownik_8c_a476be34db9a431b3cec831b6152e7276}} 
+\index{lzw\_slownik.c@{lzw\_slownik.c}!ogon@{ogon}}
+\index{ogon@{ogon}!lzw\_slownik.c@{lzw\_slownik.c}}
+\doxysubsubsection{\texorpdfstring{ogon}{ogon}}
+{\footnotesize\ttfamily \mbox{\hyperlink{lzw__slownik_8h_a6ce97ebf0e55a3d962847993d8117a92}{Slownik\+Wezel}} $\ast$ ogon}
+
+\mbox{\Hypertarget{lzw__slownik_8c_a4a267300a5718d9098615e5c4a8e0b7e}\label{lzw__slownik_8c_a4a267300a5718d9098615e5c4a8e0b7e}} 
+\index{lzw\_slownik.c@{lzw\_slownik.c}!slownik@{slownik}}
+\index{slownik@{slownik}!lzw\_slownik.c@{lzw\_slownik.c}}
+\doxysubsubsection{\texorpdfstring{slownik}{slownik}}
+{\footnotesize\ttfamily \mbox{\hyperlink{lzw__slownik_8h_a6ce97ebf0e55a3d962847993d8117a92}{Slownik\+Wezel}}$\ast$ slownik}
+
