@@ -6,6 +6,19 @@
 int resztki = 0;
 int resztki_bity;
 
+/*! \fn void wczytaj_kompresje_LZW(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciowego)
+    \brief
+   Na poczatku otwieramy plik.
+   - Jesli plik wejsciowy jest pusta wartoscia to wychodzimy z programu
+   Potem definiujemy strumien wyjsciowy.
+   - Jesli plik wyjsciowy jest pusta wartoscia to wychodzimy z programu 
+   Korzystamy kompresuj LZW dla nazwy pliku wyjsciowego i wejsciowego.
+
+    \param nazwa_pliku_wejsciowego
+    \param nazwa_pliku_wyjsciowego
+
+*/
+
 void wczytaj_kompresje_LZW(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciowego)
 {
     FILE *plik_wejsciowy = fopen(nazwa_pliku_wejsciowego, "rb");
@@ -22,6 +35,25 @@ void wczytaj_kompresje_LZW(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjs
     fclose(plik_wejsciowy);
     fclose(plik_wyjsciowy);
 }
+
+/*! \fn void kompresuj_LZW(FILE *wejscie_plik, FILE *wyjscie_plik)     
+    \brief
+   Prefiks jest rowny wejsciu pliku.
+   - Jezeli prefiks jest rowny EOF to wtedy zwracamy return
+   Nastepnie musimy zadeklarowac znak, nastepny_kod, indeks, nastepny kod rowny 256,
+   Pozniej uzywamy funkcji slownik_inicjalizacja
+   - Dopoki znak jest rowny getc(wejscie pliku)
+   - Jesli indeks jest rowny funkcji slownik szukaj(prefiks, znak) to wtedy prefiks zrownujemy
+   z indeksem, w przeciwnym wypadku zwroc funkcje pisania binarnego
+   Nastepnie dalej uzywamy else i jesli nastepny kod jest mniejszy od wielkosci slownika, potem
+  uzywamy funkcji dodawania do slownika i potem zrownujemy prefiks ze znakiem, nastepnie
+  uzywamy funkcji pisania binarnego
+  - Jesli resztki sa wieksze od zera to wtedy uzywamy funkcji fputs i funkcji niszczacej slownikś
+
+    \param wejscie_plik
+    \param wyjscie_plik
+
+*/
 
 void kompresuj_LZW(FILE *wejscie_plik, FILE *wyjscie_plik) {    
     int prefiks = getc(wejscie_plik);
@@ -52,6 +84,20 @@ void kompresuj_LZW(FILE *wejscie_plik, FILE *wyjscie_plik) {
     slownik_zniszcz();
 }
 
+/*! \fn void wczytaj_dekompresje_LZW(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciowego)     
+    \brief
+    Na poczatku definujemy strumien pliku wejsciowego.
+    - Jesli plik wejsciowy jest pusta wartoscia to wtedy wychodzimy z programu
+    Definiujemy strumien pliku wyjsciowego.
+    - Jesli plik wyjsciowy jest pusta wartoscia to wychodzimy z programu
+    Korzystamy z funkcji dekompresuj_LZW oraz fclose dla dla pliku wejsciowego i wyjsciowego
+  
+    \param nazwa_pliku_wejsciowego
+    \param nazwa_pliku_wyjsciowegos
+
+*/
+
+
 void wczytaj_dekompresje_LZW(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciowego)
 {
     FILE *plik_wejsciowy = fopen(nazwa_pliku_wejsciowego, "rb");
@@ -69,6 +115,21 @@ void wczytaj_dekompresje_LZW(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wy
     fclose(plik_wyjsciowy);
 }
 
+/*! \fn void dekompresuj_LZW(FILE* wejscie_plik, FILE* wyjscie_plik)     
+    \brief
+    Deklarujemy wczesniejszy kod i aktualny kod, nastepny kod oraz pierwszy char.
+    - Wczesniejszy kod jest rowny jest rowny funkcji czytaj binarnie
+    - Jesli wczesniejszy kod jest rowny 0 to zwracamy return, potem uzywamy funkcji fputc
+    - Dopoki aktualny kod jest rowny funkcji czytaj binarnie dla wejscia jest wiekszy od 0, w tej
+    petli while sprawdzamy w warunku if czy aktualny kod jest wiekszy badz rowny nastepnemu kodowi
+    i w if uzywamy funkcji putc, w przeciwnym wypadku pierwszy char jest rowny funkcji dekoduj LZW()
+    - W nastepnym warunku jesli nastepny kod jest mniejszy od wielkosci slownika to uzywamy
+    funkcji dodania do tablicy
+  
+    \param wejscie_plik
+    \param wyjscie_plik
+
+*/
 
 void dekompresuj_LZW(FILE* wejscie_plik, FILE* wyjscie_plik) {
    
