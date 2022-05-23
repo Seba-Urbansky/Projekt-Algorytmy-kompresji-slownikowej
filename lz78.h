@@ -10,7 +10,7 @@ typedef unsigned char indeks;
 /*! \fn typedef struct WezelStruktura
     \brief
     To jest struktura calego wezla
-    Zadeklarowane są w niej idx, znak, dziecko.
+    Zadeklarowane są w niej idx, znak, dziecko.ś
    
 */
 
@@ -22,11 +22,24 @@ typedef struct WezelStruktura
 } Wezel;
 
 
+/*! \fn ttypedef struct ListaStruktura
+    \brief
+    To jest struktura calego listy z wezlem
+    Zadeklarowane są w niej wezel oraz nastepny
+   
+*/
+
 typedef struct ListaStruktura
 {
     struct WezelStruktura wezel;
     struct ListaStruktura* nastepny;
 } Lista;
+
+/*! \fn Deklaracje Funkcji
+    \brief
+    Pod spodem sa zadeklarowane funkcje dla lz78.c
+   
+*/
 
 
 void dodaj_potomka(Lista** dziecko, indeks idx, char znak);
