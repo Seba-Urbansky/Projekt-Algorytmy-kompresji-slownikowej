@@ -7,6 +7,8 @@
 
 #define MAX 32
 
+
+
 // to jest milestone1 - algorytm LZ78
 
 // http://fizyka.umk.pl/~leii/wskaznikiStrukturyAiR.pAf
@@ -17,6 +19,12 @@ void menu();
 void wyjscie()
 {
 }
+
+/*! \fn Menu
+    \brief
+    Pod spodem jest menu.
+   
+*/
 
 void menu()
 {

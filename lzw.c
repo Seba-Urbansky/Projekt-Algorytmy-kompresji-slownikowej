@@ -124,7 +124,7 @@ void wczytaj_dekompresje_LZW(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wy
     petli while sprawdzamy w warunku if czy aktualny kod jest wiekszy badz rowny nastepnemu kodowi
     i w if uzywamy funkcji putc, w przeciwnym wypadku pierwszy char jest rowny funkcji dekoduj LZW()
     - W nastepnym warunku jesli nastepny kod jest mniejszy od wielkosci slownika to uzywamy
-    funkcji dodania do tablicy
+    funkcji dodania do tablicy, a na koncu zrownujemy aktualny kod z wczesniejszym kodem
   
     \param wejscie_plik
     \param wyjscie_plik
@@ -158,6 +158,20 @@ void dekompresuj_LZW(FILE* wejscie_plik, FILE* wyjscie_plik) {
    
 }
 
+/*! \fn int dekoduj_LZW(int kod, FILE* wyjscie_plik)
+    \brief
+   Deklarujemy znak i tymczasowa.
+   - Jesli kod jest wiekszt od 255 to wtedy znak jest rowny funkcji tablica znak,
+   tymczasowa jest rowna funkcji dekoduj_LZW
+   - W przeciwnym wypadku zrownujemy znak z kodem, zrownujemy tymczasowa z kodem
+   Na koncu uzywam funkcji fputc i zwracam tymczasowa
+    \param kod
+    \param wyjscie_plik
+    \return zwraca liczbowa warosc dekodowania lzw
+
+*/
+
+
 int dekoduj_LZW(int kod, FILE* wyjscie_plik) {
     int znak; int tymczasowa;
 
@@ -171,6 +185,18 @@ int dekoduj_LZW(int kod, FILE* wyjscie_plik) {
     fputc(znak, wyjscie_plik);
     return tymczasowa;
 }
+
+/*! \fn void pisz_binarnie(FILE * wyjscie, int kod)
+    \brief
+    - Jesli resztki sa wieksze od 0 to wtedy w warunku wczesniejszy kod zrownujemy z resztkami bitow
+    mniejszych od 4 dodac kod wiekszy od 8, uzywamy tez funkcji fputc oraz zrownujemy resztki z 0
+    - W przeciwnym wypadku zrownujemy resztki bitow z kodem oraz resztki sa rowne 1 oraz fputc.
+    
+    \param wyjscie
+    \param kod
+    
+
+*/
 
 void pisz_binarnie(FILE * wyjscie, int kod) {
     if (resztki > 0) {
@@ -187,6 +213,19 @@ void pisz_binarnie(FILE * wyjscie, int kod) {
         fputc(kod >> 4, wyjscie);
     }
 }
+
+/*! \fn int czytaj_binarnie(FILE * wejscie)
+    \brief
+    Na poczatku kod zrownujemy z funkcja fgets
+    - Jesli kod jest rowny wartosci EOF to wtedy zwracamy 0
+    - Jesli resztki sa wieksze od 0 to wtedy kod jest rowny resztkami bitow << od 8 + kod
+    i zrownujemy resztki z 0
+    - W przeciwnym wypadku nastepny kod jest rowny fgetc na wejsciu, resztki bitow zrownujemy 
+    z nastepnym kodem oraz resztki sa rowne 1, kod jest rowny kodowi << 4 + nastepny kod + 4
+  
+    \param wejscie
+    \return zwracam liczbowe wartosci z czytania binarnego
+*/
 
 int czytaj_binarnie(FILE * wejscie) {
     int kod = fgetc(wejscie);    
