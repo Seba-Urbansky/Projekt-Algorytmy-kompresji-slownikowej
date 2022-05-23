@@ -64,10 +64,10 @@ void slownik_zniszcz() {
     Na koncu zwracamy wartosc -1;
 
 
-   \return Zwraca wartosc liczbowa szukana slownika
+   
    \param prefiks
    \param znak
-   
+   \return Zwraca wartosc liczbowa szukana slownika
 */
 
 int slownik_szukaj(int prefiks, int znak) {
@@ -80,12 +80,17 @@ int slownik_szukaj(int prefiks, int znak) {
 
 /*! \fn int slownik_prefiks(int value) 
     \brief
-  
+    Deklarujemy wezel.
+    W petli  wezel jest rowny slownikowi, a wezel nie jest pusta wartoscia, a wezel jest rowny
+    wskaznikowi wezla na nastepny element.
+    - W petli for stosujemy warunek if jesli value jest rowne wezel wskazuje na wartosclzw.
+    Zwracaj wskaznik wezla na prefiks.
+    - Zwracaj wartosc -1.
 
+  
+   \param value
    \return Zwraca wartosc liczbowa prefiks
-   \param prefiks
-   \param znak
-   
+
 */
 
 
@@ -96,6 +101,22 @@ int slownik_prefiks(int value) {
     }
     return -1;
 }
+
+/*! \fn int slownik_znak(int value)
+    \brief
+    Uzywamy wskaznika na wezel. 
+    - W petli for wezel jest rowny slownikowi, wezel nie jest pusta wartoscia, wezel jest rowny
+    wskaznikowi wezla na nastepny element.
+    - W petli stosujemy warunek if a w nim jesli value jest rowne wskaznikowi na wartosclzw to
+    zwroc wskaznikowi wezla na znak;
+    - Na koncu zwraaca wartosc -1.
+
+  
+   \param value
+   \return Zwraca wartosc liczbowa znaku slownika.
+
+*/
+
 
 int slownik_znak(int value) {
     SlownikWezel *wezel;
@@ -108,6 +129,20 @@ int slownik_znak(int value) {
     return -1;
 }
 
+/*! \fn void slownik_dodaj(int prefiks, int znak, int wartosclzw) 
+    \brief
+   Uzywamy wskaznika na wezel.
+   Wezel jest rowny alokacji pamieci na strukture SlownikWezel.
+   - Wartosclzw jest rowna wskaznikowi wezla na wartosclzw, prefiks jest rowny wskaznikowi
+   wezla na prefiks. Znak jest rowny wskaznikowi wezla na znak.
+   - Na koncu uzywamy funkcje dodaj_wezel.
+  
+   \param prefiks
+   \param znak
+   \param wartosclzw
+    
+
+*/
 
 void slownik_dodaj(int prefiks, int znak, int wartosclzw) {
     SlownikWezel *wezel;
