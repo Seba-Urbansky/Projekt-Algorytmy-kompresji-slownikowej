@@ -3,8 +3,8 @@
 #include <string.h>
 #include "lzw.h"
 
-int resztki = 0;
-int resztki_bity;
+int resztki = 0;  /*!< Poczatkowa wartosc pozostalych resztek bitow */
+int resztki_bity; /*!< Aktualna wartosc pozostalych resztek bitow */
 
 /*! \fn void wczytaj_kompresje_LZW(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciowego)
     \brief

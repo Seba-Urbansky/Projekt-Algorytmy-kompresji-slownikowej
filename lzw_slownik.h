@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define slownik_wielkosc 4096
+#define slownik_wielkosc 4096  /*!< zdefinowanie wielkosci uzywanego slownika */
 
 /*! \fn typedef struct SlownikWezelStruktura
     \brief

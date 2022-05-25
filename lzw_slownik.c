@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "lzw_slownik.h"
 
-SlownikWezel *slownik, *ogon;
+SlownikWezel *slownik /*!< Zmienna globalna samego slownika */ , *ogon; /*!< Koncowka wezla slownika */
 
 /*! \fn void slownik_inicjalizacja()
     \brief

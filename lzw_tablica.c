@@ -3,7 +3,7 @@
 
 /*! \fn TablicaElement tablica[4096];
     \brief
-    Korzystam tutaj z talicy 4096.
+    Korzystam tutaj z tablicy jednowymiarowej.
    
 */
 

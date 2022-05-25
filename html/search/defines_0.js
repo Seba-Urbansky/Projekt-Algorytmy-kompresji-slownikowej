@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['max_0',['MAX',['../main_8c.html#a392fb874e547e582e9c66a08a1f23326',1,'main.c']]]
+  ['lz78_5fh_0',['LZ78_H',['../lz78_8h.html#a54ab3436a25a42b6bf25446f10ee8d7f',1,'lz78.h']]]
 ];

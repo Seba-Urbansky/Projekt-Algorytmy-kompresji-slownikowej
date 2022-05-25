@@ -1,5 +1,5 @@
 #ifndef LZ78_H
-#define LZ78_H
+#define LZ78_H /*!< deklaracja lz78h */
 
 #include <stdio.h>
 #include <stdlib.h>
