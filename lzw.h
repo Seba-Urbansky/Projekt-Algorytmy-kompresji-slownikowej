@@ -6,11 +6,7 @@
 #include "lzw_slownik.h"
 #include "lzw_tablica.h"
 
-/*! \fn Deklaracja funkcji
-    \brief
-    Pod spodem sa zadeklarowane funkcje dla lzw.c
-   
-*/
+
 
 void wczytaj_kompresje_LZW(char *nazwa_pliku_wejsciowego, char *nazwa_pliku_wyjsciowego);
 void kompresuj_LZW(FILE *wejscie_plik, FILE *wyjscie_plik);

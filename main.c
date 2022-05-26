@@ -5,7 +5,7 @@
 #include "lz78.h"
 #include "lzw.h"
 
-#define MAX 32 /*!< Maksymalna wartosc zmiennej tekstowej */
+#define MAX 32 /*!< Deklaracja maksymalnej dlugosci tekstu  */
 
 
 

@@ -3,13 +3,8 @@
 
 #define slownik_wielkosc 4096  /*!< zdefinowanie wielkosci uzywanego slownika */
 
-/*! \fn typedef struct SlownikWezelStruktura
-    \brief
-    To jest struktura calego wezla Slownika
-    Zadeklarowane są w niej wartosclzw, prefiks, znak.
-   
-*/
-
+    
+ /*! \brief  To jest struktura calego wezla Slownika Zadeklarowane są w niej wartosclzw, prefiks, znak. */
 typedef struct SlownikWezelStruktura {
     int wartosclzw; 
     int prefiks; 

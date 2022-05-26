@@ -1,12 +1,7 @@
 #include <stdio.h>
 
-/*! \fn typedef struct TablicaElementStruktura
-    \brief
-    Tutaj jest zadeklarowana struktura dla tablicy element.
 
-
-*/
-
+/*! \brief  Tutaj jest zadeklarowana struktura dla tablicy element. */
 typedef struct TablicaElementStruktura{
     int prefiks; 
     int znak; 

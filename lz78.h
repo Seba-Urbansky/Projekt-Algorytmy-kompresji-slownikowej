@@ -7,13 +7,8 @@
 typedef unsigned char indeks;
 
 
-/*! \fn typedef struct WezelStruktura
-    \brief
-    To jest struktura calego wezla
-    Zadeklarowane są w niej idx, znak, dziecko.ś
-   
-*/
 
+/*! \brief  To jest struktura calego wezla  */
 typedef struct WezelStruktura
 {
     indeks idx;
@@ -22,13 +17,8 @@ typedef struct WezelStruktura
 } Wezel;
 
 
-/*! \fn ttypedef struct ListaStruktura
-    \brief
-    To jest struktura calego listy z wezlem
-    Zadeklarowane są w niej wezel oraz nastepny
-   
-*/
 
+/*! \brief To jest struktura calego listy z wezlem Zadeklarowane są w niej wezel oraz nastepny*/
 typedef struct ListaStruktura
 {
     struct WezelStruktura wezel;
